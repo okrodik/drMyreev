@@ -734,6 +734,54 @@ body{
     flex-grow: 1;
 }
 
+/* Стили для блока "Отзывы" */
+.review__bg {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background: var(--white);
+    text-align: center;
+}
+
+.review__header {
+    text-align: center;
+    font-size: 2.5em;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+/* Контейнер для отзывов */
+.review-otziv {
+    background: var(--light);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--secondary);
+    text-align: left;
+}
+
+.review-otziv:last-child {
+    margin-bottom: 40px;
+}
+
+/* Контейнер для изображений отзывов */
+.review-img {
+    display: inline-block;
+    margin: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.review-img img {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
 /* Стили модального окна */
 .modal {
     display: none;
