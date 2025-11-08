@@ -383,6 +383,7 @@ body{
     grid-column: 1 / -1; /* Растягивает на все колонки */
     text-align: center;
     margin-top: 40px;
+    margin-bottom: 50px;
 }
 
 .price__button button {
@@ -399,6 +400,180 @@ body{
 .price__button button:hover {
     background: var(--accent);
     transform: scale(1.05);
+}
+
+/* Стили для блока "О клинике" */
+.about__bg {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background: var(--light); /* Новый фон */
+}
+
+.about__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about__header-text {
+    font-size: 2.2em;
+    color: var(--primary);
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.about__description {
+    margin-bottom: 50px;
+}
+
+.about__description-text {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--secondary);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about__adventure {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.about__advenure-text {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.about__advenure-text-header {
+    font-size: 1.3em;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.about__advenure-text-slova {
+    color: var(--secondary);
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+/* Карусель изображений */
+.about__img {
+    position: relative;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto 50px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.about__img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.about__img img:first-child {
+    opacity: 1; /* Первое изображение видимо по умолчанию */
+}
+
+/* Кнопки карусели */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.8);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: var(--white);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.carousel-prev {
+    left: 20px;
+}
+
+.carousel-next {
+    right: 20px;
+}
+
+/* Точки-индикаторы */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--white);
+    transform: scale(1.2);
+}
+
+/* Гарантии */
+.about__garantia {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.about__garantia-text {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--primary);
+    font-weight: 500;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Призыв к действию */
+.about__prizuv {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.about__prizuv-text {
+    color: var(--white);
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0;
 }
 
 /* Стили модального окна */
@@ -493,6 +668,7 @@ body{
     background: var(--accent);
     transform: translateY(-2px);
 }
+
 
 /* Анимации */
 @keyframes fadeIn {

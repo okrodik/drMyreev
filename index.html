@@ -228,6 +228,70 @@
 
     </section>
 
+    <section class="about">
+        <div class="about__bg">
+            <div class="about__header">
+                <div class="about__header-text">
+                    "Клиника доктора Мыреева - современная стоматология с заботой о вашей улыбке"
+                </div>
+            </div>
+            <div class="about__description">
+                <div class="about__description-text">
+                    Клиника доктора Мыреева уже X лет дарит якутянам здоровые улыбки и уверенность в себе. 
+                    Мы создали место, где современные стоматологические технологии сочетаются с 
+                    индивидуальным подходом к каждому пациенту.
+
+                    Наша миссия - сделать качественное стоматологическое лечение доступным и 
+                    комфортным для жителей Якутска и Республики Саха.
+                </div>
+            </div>
+            <div class="about__adventure">
+                <div class="about__advenure-text">
+                    <div class="about__advenure-text-header">Опытные врачи</div>
+                    <div class="about__advenure-text-slova">"Команда сертифицированных специалистов со стажем работы от 8 лет"
+
+                        "Регулярное повышение квалификации в ведущих стоматологических центрах России"
+                        
+                        "Узкая специализация каждого врача для максимального качества лечения"</div>
+                </div>
+                <div class="about__advenure-text">
+                    <div class="about__advenure-text-header">Современные методы</div>
+                    <div class="about__advenure-text-slova">"Используем только проверенные мировые методики и материалы"
+
+                        "Цифровая диагностика для точной постановки диагноза"
+                        
+                        "Безболезненное лечение с применением современных анестетиков"</div>
+                </div>
+                <div class="about__advenure-text">
+                    <div class="about__advenure-text-header">Комфортная атмосфера</div>
+                    <div class="about__advenure-text-slova">"Уютные кабинеты, создающие ощущение домашнего уюта"
+
+                        "Индивидуальный подход к каждому пациенту"
+                        
+                        "Дружелюбный персонал, готовый ответить на все ваши вопросы"</div>
+                </div>
+                
+            </div>
+            <div class="about__img">
+                <img src="img/resepth.png" alt="">
+                <img src="img/cabinet.png" alt="">
+                <img src="img/photo_resepth.png" alt="">
+            </div>
+            <div class="about__garantia">
+                <div class="about__garantia-text">Гарантии качества - "Даем гарантию на все виды лечения"</div>
+                <div class="about__garantia-text">Безопасность - "Строгое соблюдение стандартов стерилизации"</div>
+                <div class="about__garantia-text">Доступность - "Работаем в центре Якутска с удобной парковкой"</div>
+            </div>
+            <div class="about__prizuv">
+                <div class="about__prizuv-text">
+                    Приходите на бесплатную консультацию и убедитесь в нашем профессионализме лично!
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
     <!-- Модальное окно -->
     <div id="modal" class="modal">
         <div class="modal-content">
@@ -274,6 +338,80 @@
             closeModal();
         });
         </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.about__img');
+        const images = carousel.querySelectorAll('img');
+        let currentIndex = 0;
+        
+        // Создаем элементы управления
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'carousel-btn carousel-prev';
+        prevBtn.innerHTML = '‹';
+        
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'carousel-btn carousel-next';
+        nextBtn.innerHTML = '›';
+        
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'carousel-dots';
+        
+        // Создаем точки
+        images.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => showImage(index));
+            dotsContainer.appendChild(dot);
+        });
+        
+        // Добавляем элементы в карусель
+        carousel.appendChild(prevBtn);
+        carousel.appendChild(nextBtn);
+        carousel.appendChild(dotsContainer);
+        
+        // Функция показа изображения
+        function showImage(index) {
+            images.forEach(img => img.style.opacity = '0');
+            images[index].style.opacity = '1';
+            
+            // Обновляем точки
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentIndex = index;
+        }
+        
+        // Функции для кнопок
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+        
+        // Назначаем обработчики
+        nextBtn.addEventListener('click', nextImage);
+        prevBtn.addEventListener('click', prevImage);
+        
+        // Автопереключение
+        let autoPlay = setInterval(nextImage, 4000);
+        
+        // Останавливаем автопереключение при наведении
+        carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
+        carousel.addEventListener('mouseleave', () => {
+            autoPlay = setInterval(nextImage, 4000);
+        });
+        
+        // Показываем первое изображение
+        showImage(0);
+    });
+    </script>
 
 </body>
 </html>
