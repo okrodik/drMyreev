@@ -1658,43 +1658,541 @@ body{
     }
 }
 
-/* ===== ИСПРАВЛЕНИЯ ДЛЯ ФОРМЫ НА КОМПЬЮТЕРАХ ===== */
+/* ===== АДАПТИВНОСТЬ С ИСПРАВЛЕНИЯМИ ===== */
 
-/* Форма на компьютерах - ограниченная ширина */
-.appointment__form {
-    max-width: 500px;
-    margin: 0 auto 40px;
-    background: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-    width: 100%;
-}
-
-/* ===== ИСПРАВЛЕНИЯ ДЛЯ КАРУСЕЛИ ===== */
-
-/* Скрываем точки на всех устройствах */
-.carousel-dots {
-    display: none;
-}
-
-/* ===== ИСПРАВЛЕНИЯ ДЛЯ КАРТЫ ===== */
-
-/* Скрываем карту на мобильных */
-@media (max-width: 768px) {
-    .contacts__map {
-        display: none;
+/* Планшеты и маленькие ноутбуки (1025px - 1300px) */
+@media (max-width: 1300px) {
+    .wrapper {
+        min-width: auto;
+    }
+    
+    .header,
+    .usluge__bg,
+    .main {
+        width: 95%;
+        max-width: 1200px;
+    }
+    
+    .main__text_slogan {
+        font-size: 4em;
+        line-height: 70px;
     }
 }
 
-/* ===== ДОПОЛНИТЕЛЬНЫЕ ИСПРАВЛЕНИЯ ===== */
+/* Планшеты (769px - 1024px) */
+@media (max-width: 1024px) {
+    .header {
+        height: auto;
+        padding: 20px 0;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+    
+    .main {
+        margin: 100px auto;
+        padding: 20px;
+    }
+    
+    .main__text_name {
+        width: auto;
+        max-width: 400px;
+    }
+    
+    .main__text_slogan {
+        font-size: 3em;
+        line-height: 60px;
+    }
+    
+    .main__button {
+        width: 250px;
+        height: 80px;
+        font-size: 1.2em;
+    }
+    
+    /* Услуги - вертикальное расположение */
+    .usluge__offer {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .usluge__offer-glavnuy {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    /* Цены - карусель */
+    .price__blocks-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 20px 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent) var(--light);
+    }
+    
+    .price__blocks-container::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .price__blocks-container::-webkit-scrollbar-track {
+        background: var(--light);
+        border-radius: 4px;
+    }
+    
+    .price__blocks-container::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 4px;
+    }
+    
+    .price__block {
+        flex: 0 0 auto;
+        width: 300px;
+        scroll-snap-align: start;
+        min-height: 380px;
+    }
+    
+    /* О клинике - вертикально */
+    .about__adventure {
+        grid-template-columns: 1fr;
+    }
+    
+    .about__garantia {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Команда - вертикально */
+    .team__doctors {
+        grid-template-columns: 1fr;
+    }
+    
+    .team__competention {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Контакты - вертикально */
+    .contacts__content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .contacts__map {
+        display: none; /* Скрываем карту на планшетах */
+    }
+    
+    /* Подвал - вертикально */
+    .footer__content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer__copyright {
+        text-align: center;
+    }
+}
 
-/* Центрирование текста "Наши основные услуги" */
+/* Большие телефоны (481px - 768px) */
+@media (max-width: 768px) {
+    /* Секция main - полностью убираем фон */
+    .main {
+        margin: 30px auto;
+        padding: 0;
+        background: none !important;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .main__text {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .main__text_slogan {
+        font-size: 2.2em;
+        line-height: 1.2;
+        margin: 15px 0;
+    }
+    
+    .main__text_name {
+        font-size: 1.4em;
+        width: auto;
+        margin: 0 auto;
+    }
+    
+    .main__button {
+        width: 200px;
+        height: 60px;
+        font-size: 1.1em;
+        margin: 20px auto;
+    }
+    
+    /* Услуги - центрирование */
+    .usluge__header-osnova {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        width: auto;
+    }
+    
+    .usluge__header-best {
+        font-size: 1.8em;
+        text-align: center;
+    }
+    
+    .usluge__offer-glavnuy {
+        width: 90%;
+        max-width: 350px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    /* Цены */
+    .price__blocks-container {
+        gap: 15px;
+    }
+    
+    .price__block {
+        width: 280px;
+        min-height: 360px;
+    }
+    
+    .price__header {
+        font-size: 1.8em;
+        padding: 20px 0;
+    }
+    
+    /* О клинике */
+    .about__header-text {
+        font-size: 1.6em;
+    }
+    
+    .about__img {
+        height: 250px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+    
+    /* Карусель - скрываем точки */
+    .carousel-dots {
+        display: none !important;
+    }
+    
+    /* Команда */
+    .team__header-text {
+        font-size: 1.8em;
+    }
+    
+    .team__glav-vrach {
+        padding: 20px;
+        margin: 0 10px 30px;
+    }
+    
+    .team__glav-vrach-img {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .team__doctors-img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    /* Отзывы - исправляем изображения */
+    .review__header {
+        font-size: 1.8em;
+    }
+    
+    .review-img {
+        display: block;
+        margin: 10px auto;
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .review-img img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    /* Запись - форма на всю ширину */
+    .appointment__header {
+        font-size: 1.8em;
+    }
+    
+    .appointment__form {
+        width: 100%;
+        max-width: none;
+        margin: 0 0 30px 0;
+        border-radius: 0;
+        padding: 25px 15px;
+        box-shadow: none;
+        border: 1px solid var(--light);
+    }
+    
+    .appointment__form-input input,
+    .appointment__form-input select {
+        padding: 12px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Контакты */
+    .contacts__header {
+        font-size: 1.8em;
+    }
+    
+    .contacts__map {
+        display: none; /* Скрываем карту */
+    }
+    
+    .contacts__info {
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    .contacts__address,
+    .contacts__phones,
+    .contacts__schedule,
+    .contacts__social {
+        margin: 0 0 20px 0;
+    }
+    
+    .contacts__social-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .contacts__social-link {
+        padding: 8px 15px;
+        font-size: 0.9em;
+        margin: 5px;
+    }
+}
+
+/* Маленькие телефоны (361px - 480px) */
+@media (max-width: 480px) {
+    .main {
+        margin: 20px auto;
+    }
+    
+    .main__text_slogan {
+        font-size: 1.8em;
+        line-height: 1.2;
+    }
+    
+    .main__text_name {
+        font-size: 1.2em;
+        padding: 8px 15px;
+    }
+    
+    .main__button {
+        width: 180px;
+        height: 50px;
+        font-size: 1em;
+    }
+    
+    /* Услуги */
+    .usluge__header-best {
+        font-size: 1.6em;
+    }
+    
+    .usluge__offer-glavnuy {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    /* Цены */
+    .price__blocks-container {
+        gap: 10px;
+        padding: 15px 10px;
+    }
+    
+    .price__block {
+        width: 260px;
+        min-height: 340px;
+        padding: 15px;
+    }
+    
+    .price__header {
+        font-size: 1.6em;
+    }
+    
+    /* О клинике */
+    .about__header-text {
+        font-size: 1.4em;
+    }
+    
+    .about__img {
+        height: 200px;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+    
+    .carousel-prev {
+        left: 5px;
+    }
+    
+    .carousel-next {
+        right: 5px;
+    }
+    
+    /* Команда */
+    .team__header-text {
+        font-size: 1.6em;
+    }
+    
+    .team__glav-vrach {
+        padding: 15px;
+        margin: 0 5px 20px;
+    }
+    
+    .team__glav-vrach-img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .team__doctors-img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Отзывы */
+    .review__header {
+        font-size: 1.6em;
+    }
+    
+    .review-img {
+        width: 95%;
+        margin: 8px auto;
+    }
+    
+    .review-img img {
+        height: 180px;
+    }
+    
+    .review-otziv {
+        padding: 15px;
+        margin: 0 5px 15px;
+    }
+    
+    /* Запись */
+    .appointment__header {
+        font-size: 1.6em;
+    }
+    
+    .appointment__form {
+        padding: 20px 10px;
+        margin: 0 0 25px 0;
+    }
+    
+    .appointment__form-input input,
+    .appointment__form-input select {
+        padding: 10px;
+    }
+    
+    /* Контакты */
+    .contacts__header {
+        font-size: 1.6em;
+    }
+    
+    .contacts__social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contacts__social-link {
+        width: 140px;
+        text-align: center;
+        margin: 3px 0;
+    }
+}
+
+/* Очень маленькие телефоны (до 360px) */
+@media (max-width: 360px) {
+    .main {
+        margin: 15px auto;
+    }
+    
+    .main__text_slogan {
+        font-size: 1.6em;
+    }
+    
+    .main__text_name {
+        font-size: 1.1em;
+    }
+    
+    .main__button {
+        width: 160px;
+        height: 45px;
+        font-size: 0.9em;
+    }
+    
+    /* Цены */
+    .price__block {
+        width: 240px;
+        min-height: 320px;
+    }
+    
+    .price__header {
+        font-size: 1.4em;
+    }
+    
+    /* Отзывы */
+    .review-img img {
+        height: 160px;
+    }
+}
+
+/* ===== ФОРМА НА КОМПЬЮТЕРАХ ===== */
+@media (min-width: 1025px) {
+    .appointment__form {
+        max-width: 500px;
+        margin: 0 auto 40px;
+        background: var(--white);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+/* ===== ОБЩИЕ ИСПРАВЛЕНИЯ ===== */
+
+/* Центрирование заголовка услуг */
 .usluge__header-osnova {
     text-align: center;
     display: inline-block;
     margin: 0 auto;
+}
+
+.usluge__offer-glavnuy {
+    text-align: center;
+}
+
+/* Скрытие точек карусели на всех устройствах */
+.carousel-dots {
+    display: none !important;
+}
+
+/* Скрытие карты на мобильных и планшетах */
+@media (max-width: 1024px) {
+    .contacts__map {
+        display: none;
+    }
 }
 
 /* Предотвращение горизонтального скролла */
@@ -1706,13 +2204,15 @@ body {
     overflow-x: hidden;
 }
 
-/* Box-sizing для форм */
+/* Box-sizing для всех элементов */
 .appointment__form,
 .appointment__form-input input,
 .appointment__form-input select,
 .modal-form input,
 .modal-form select,
-.modal-form textarea {
+.modal-form textarea,
+.review-img,
+.review-img img {
     box-sizing: border-box;
 }
 
@@ -1730,26 +2230,6 @@ body {
 @media (prefers-reduced-motion: no-preference) {
     .price__blocks-container {
         scroll-behavior: smooth;
-    }
-}
-
-/* Исправление для картинок отзывов */
-@media (max-width: 480px) {
-    .review-img {
-        display: block;
-        margin: 10px auto;
-    }
-}
-
-/* Исправление для заголовков */
-@media (max-width: 768px) {
-    .about__header-text,
-    .team__header-text,
-    .review__header,
-    .appointment__header,
-    .contacts__header {
-        text-align: center;
-        padding: 0 10px;
     }
 }
 
@@ -1772,12 +2252,21 @@ body {
 .usluge__offer-glavnuy,
 .team__glav-vrach,
 .team__doctors-vrach,
-.team-doctors-vrach {
+.team-doctors-vrach,
+.review-img {
     max-width: 100%;
 }
 
-/* Исправление для iframe в мобильных браузерах */
-.contacts__map iframe {
-    max-width: 100%;
-    -webkit-overflow-scrolling: touch;
+/* Убираем тени и градиенты на мобильных для производительности */
+@media (max-width: 768px) {
+    .main__text_slogan {
+        text-shadow: none;
+    }
+    
+    .usluge__offer-glavnuy,
+    .team__glav-vrach,
+    .team__doctors-vrach,
+    .team-doctors-vrach {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 }
