@@ -896,7 +896,7 @@ body{
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
-    background: var(--light);
+    background: var(--white);
     box-sizing: border-box;
 }
 
