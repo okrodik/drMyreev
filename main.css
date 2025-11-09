@@ -15,6 +15,7 @@ body{
     color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 .wrapper{
@@ -91,7 +92,7 @@ body{
 }
 
 .main{
-    background: rgba(70, 130, 180, 0.8); /* Полупрозрачный secondary */
+    background: rgba(70, 130, 180, 0.8);
     margin: 216px auto;
     width: 1290px;
     display: flex;
@@ -99,10 +100,12 @@ body{
     align-items: center;
     border-radius: 15px;
     padding: 30px;
+    box-sizing: border-box;
 }
 
 .main__text{
     color: var(--white);
+    width: 100%;
 }
 
 .main__text_name{
@@ -112,6 +115,7 @@ body{
     padding: 10px;
     border-radius: 10px;
     color: var(--primary);
+    box-sizing: border-box;
 }
 
 .main__text_slogan{
@@ -139,6 +143,7 @@ body{
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .main__button:hover{
@@ -157,6 +162,7 @@ body{
 .usluge__bg{
     margin: 0 auto;
     width: 1290px;
+    box-sizing: border-box;
 }
 
 .usluge__header{
@@ -181,15 +187,18 @@ body{
 }
 
 .usluge__header-osnova{
-    margin: 10px;
-    height: 40px;
+    margin: 10px auto;
+    height: auto;
+    min-height: 40px;
     border: 3px solid var(--accent);
     border-radius: 30px;
-    padding: 5px 20px;
+    padding: 8px 25px;
     background: var(--accent);
     color: var(--primary);
     display: inline-block;
     font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .usluge__offer{
@@ -197,6 +206,7 @@ body{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 100px;
+    flex-wrap: wrap;
 }
 
 .usluge__offer-glavnuy{
@@ -209,6 +219,7 @@ body{
     padding: 20px;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
 
 .usluge__offer-glavnuy:hover{
@@ -229,17 +240,24 @@ body{
 }
 
 .usluge__offer-zagolovok{
-    height: 50px;
+    height: auto;
+    min-height: 50px;
     margin: 15px 0;
     color: var(--primary);
     font-size: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .usluge__offer-opisanie{
     margin: 0;
-    height: 80px;
+    height: auto;
+    min-height: 80px;
     color: var(--secondary);
     line-height: 1.5;
+    display: flex;
+    align-items: center;
 }
 
 .usluge__offer-button{
@@ -252,6 +270,7 @@ body{
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .usluge__offer-button:hover{
@@ -264,31 +283,9 @@ body{
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.price__header {
-    text-align: center;
-    margin-bottom: 50px;
-    padding: 40px 0;
-    color: var(--primary);
-    font-size: 3em;
-    font-weight: bold;
-    position: relative;
-}
-
-.price__header::after {
-    content: '';
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
-}
-
-/* Или с фоном */
 .price__header {
     text-align: center;
     margin-bottom: 50px;
@@ -302,9 +299,27 @@ body{
 }
 
 .price__blocks-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     gap: 20px;
+    padding: 20px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--light);
+}
+
+.price__blocks-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.price__blocks-container::-webkit-scrollbar-track {
+    background: var(--light);
+    border-radius: 4px;
+}
+
+.price__blocks-container::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
 }
 
 .price__block {
@@ -318,13 +333,17 @@ body{
     min-height: 400px;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    width: 300px;
+    scroll-snap-align: start;
 }
 
 .price__block-header {
     color: var(--primary);
-    font-size: 1.1em; /* Чуть меньше для лучшего чтения */
+    font-size: 1.1em;
     margin-bottom: 15px;
-    min-height: 60px; /* Фиксированная высота для заголовков */
+    min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -333,8 +352,8 @@ body{
 .price__block-img {
     width: 80px;
     height: 80px;
-    margin: 0 auto 15px; /* Отступ снизу */
-    flex-shrink: 0; /* Запрещает уменьшение */
+    margin: 0 auto 15px;
+    flex-shrink: 0;
 }
 
 .price__block-img img {
@@ -354,16 +373,16 @@ body{
 .price__block-desription {
     line-height: 1.6;
     text-align: left;
-    margin: 10px 0 0 0; /* Убрал верхний отступ */
+    margin: 10px 0 0 0;
     padding: 0 5px;
-    max-height: 120px; /* Чуть меньше для баланса */
+    max-height: 120px;
     overflow-y: auto;
-    flex-grow: 1; /* Занимает оставшееся пространство */
+    flex-grow: 1;
     color: var(--secondary);
     font-size: 0.9em;
+    box-sizing: border-box;
 }
 
-/* Стилизация скроллбара */
 .price__block-desription::-webkit-scrollbar {
     width: 4px;
 }
@@ -373,14 +392,12 @@ body{
     border-radius: 2px;
 }
 
-/* Для Firefox */
 .price__block-desription {
     scrollbar-width: thin;
     scrollbar-color: var(--accent) transparent;
 }
 
 .price__button {
-    grid-column: 1 / -1; /* Растягивает на все колонки */
     text-align: center;
     margin-top: 40px;
     margin-bottom: 50px;
@@ -395,6 +412,7 @@ body{
     font-size: 1.2em;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .price__button button:hover {
@@ -402,12 +420,12 @@ body{
     transform: scale(1.05);
 }
 
-/* Стили для блока "О клинике" */
 .about__bg {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
-    background: var(--light); /* Новый фон */
+    background: var(--light);
+    box-sizing: border-box;
 }
 
 .about__header {
@@ -448,6 +466,7 @@ body{
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .about__advenure-text-header {
@@ -463,7 +482,6 @@ body{
     font-size: 0.95em;
 }
 
-/* Карусель изображений */
 .about__img {
     position: relative;
     max-width: 800px;
@@ -484,10 +502,9 @@ body{
 }
 
 .about__img img:first-child {
-    opacity: 1; /* Первое изображение видимо по умолчанию */
+    opacity: 1;
 }
 
-/* Кнопки карусели */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -516,33 +533,14 @@ body{
     right: 20px;
 }
 
-/* Точки-индикаторы */
 .carousel-dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10;
+    display: none !important;
 }
 
 .carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    display: none !important;
 }
 
-.carousel-dot.active {
-    background: var(--white);
-    transform: scale(1.2);
-}
-
-/* Гарантии */
 .about__garantia {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -558,15 +556,16 @@ body{
     color: var(--primary);
     font-weight: 500;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
 
-/* Призыв к действию */
 .about__prizuv {
     text-align: center;
     padding: 30px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 15px;
     margin-top: 30px;
+    box-sizing: border-box;
 }
 
 .about__prizuv-text {
@@ -576,12 +575,12 @@ body{
     margin: 0;
 }
 
-/* Стили для блока "Команда" */
 .team__bg {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
     background: var(--light);
+    box-sizing: border-box;
 }
 
 .team__header {
@@ -595,7 +594,6 @@ body{
     font-weight: bold;
 }
 
-/* Главный врач */
 .team__glav-vrach {
     display: flex;
     flex-direction: column;
@@ -606,6 +604,7 @@ body{
     background: var(--white);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
 
 .team__glav-vrach-img {
@@ -637,7 +636,6 @@ body{
     max-width: 600px;
 }
 
-/* Врачи */
 .team__doctors {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -656,6 +654,7 @@ body{
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    box-sizing: border-box;
 }
 
 .team__doctors-vrach:hover,
@@ -691,7 +690,6 @@ body{
     color: var(--secondary);
 }
 
-/* Компетенции */
 .team__competention {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -700,6 +698,7 @@ body{
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
 
 .team__competention-block {
@@ -710,6 +709,7 @@ body{
     background: var(--light);
     border-radius: 15px;
     transition: transform 0.3s ease;
+    box-sizing: border-box;
 }
 
 .team__competention-block:hover {
@@ -734,13 +734,13 @@ body{
     flex-grow: 1;
 }
 
-/* Стили для блока "Отзывы" */
 .review__bg {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
     background: var(--white);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .review__header {
@@ -751,7 +751,6 @@ body{
     margin-bottom: 50px;
 }
 
-/* Контейнер для отзывов */
 .review-otziv {
     background: var(--light);
     padding: 25px;
@@ -760,19 +759,21 @@ body{
     line-height: 1.6;
     color: var(--secondary);
     text-align: left;
+    box-sizing: border-box;
 }
 
 .review-otziv:last-child {
     margin-bottom: 40px;
 }
 
-/* Контейнер для изображений отзывов */
 .review-img {
     display: inline-block;
     margin: 15px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .review-img img {
@@ -780,15 +781,16 @@ body{
     height: 250px;
     object-fit: cover;
     display: block;
+    max-width: 100%;
 }
 
-/* Стили для блока "Запись на прием" */
 .appointment__bg {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
     background: var(--light);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .appointment__header {
@@ -798,14 +800,15 @@ body{
     margin-bottom: 40px;
 }
 
-/* Форма */
 .appointment__form {
-    max-width: 500px;
+    max-width: 450px;
     margin: 0 auto 40px;
     background: var(--white);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .appointment__form-input {
@@ -820,6 +823,7 @@ body{
     border-radius: 8px;
     font-size: 1em;
     transition: border-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 .appointment__form-input input:focus,
@@ -839,13 +843,13 @@ body{
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
+    box-sizing: border-box;
 }
 
 .appointment__form-button:hover {
     background: var(--accent);
 }
 
-/* Контакты */
 .appointment__contacts {
     margin-bottom: 30px;
 }
@@ -866,7 +870,6 @@ body{
     color: var(--accent);
 }
 
-/* Кнопка быстрого звонка */
 .appointment__call-button {
     margin-top: 20px;
 }
@@ -881,6 +884,7 @@ body{
     font-size: 1.1em;
     font-weight: bold;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .appointment__call-link:hover {
@@ -888,12 +892,12 @@ body{
     transform: scale(1.05);
 }
 
-/* Стили для блока "Контакты" */
 .contacts__bg {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
     background: var(--light);
+    box-sizing: border-box;
 }
 
 .contacts__header {
@@ -910,7 +914,6 @@ body{
     align-items: stretch;
 }
 
-/* Информация */
 .contacts__info {
     flex: 1;
     display: flex;
@@ -926,6 +929,7 @@ body{
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-sizing: border-box;
 }
 
 .contacts__address-title,
@@ -962,13 +966,12 @@ body{
     color: var(--accent);
 }
 
-/* Социальные сети */
 .contacts__social {
     background: var(--white);
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    text-align: center; /* Добавляем центрирование */
+    text-align: center;
 }
 
 .contacts__social-title {
@@ -976,12 +979,12 @@ body{
     color: var(--primary);
     font-weight: bold;
     margin-bottom: 15px;
-    text-align: center; /* Центрируем заголовок */
+    text-align: center;
 }
 
 .contacts__social-links {
     display: flex;
-    justify-content: center; /* Центрируем кнопки по горизонтали */
+    justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
 }
@@ -996,6 +999,7 @@ body{
     transition: all 0.3s ease;
     white-space: nowrap;
     display: inline-block;
+    box-sizing: border-box;
 }
 
 .contacts__social-link:hover {
@@ -1003,7 +1007,6 @@ body{
     transform: translateY(-2px);
 }
 
-/* Карта */
 .contacts__map {
     flex: 1;
     border-radius: 12px;
@@ -1019,10 +1022,10 @@ body{
     display: block;
 }
 
-/* Стили для подвала */
 .footer__bg {
     background: var(--primary);
     padding: 40px 20px;
+    box-sizing: border-box;
 }
 
 .footer__content {
@@ -1034,7 +1037,6 @@ body{
     align-items: start;
 }
 
-/* Контакты */
 .footer__contacts {
     color: var(--white);
 }
@@ -1069,7 +1071,6 @@ body{
     opacity: 1;
 }
 
-/* Навигация */
 .footer__nav {
     color: var(--white);
 }
@@ -1097,7 +1098,6 @@ body{
     opacity: 1;
 }
 
-/* Копирайт */
 .footer__copyright {
     color: var(--white);
     text-align: right;
@@ -1114,7 +1114,6 @@ body{
     opacity: 0.6;
 }
 
-/* Стили модального окна */
 .modal {
     display: none;
     position: fixed;
@@ -1137,6 +1136,7 @@ body{
     position: relative;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     animation: slideIn 0.3s ease;
+    box-sizing: border-box;
 }
 
 .close {
@@ -1175,6 +1175,8 @@ body{
     font-size: 16px;
     font-family: inherit;
     transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .modal-form input:focus,
@@ -1200,6 +1202,8 @@ body{
     font-weight: bold;
     transition: all 0.3s ease;
     margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .modal-form button:hover {
@@ -1207,8 +1211,6 @@ body{
     transform: translateY(-2px);
 }
 
-
-/* Анимации */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -1225,7 +1227,7 @@ body{
     }
 }
 
-/* ===== АДАПТИВНОСТЬ С ИСПРАВЛЕНИЯМИ ===== */
+/* ===== АДАПТИВНОСТЬ ===== */
 
 /* Планшеты и маленькие ноутбуки (1025px - 1300px) */
 @media (max-width: 1300px) {
@@ -1277,7 +1279,6 @@ body{
         font-size: 1.2em;
     }
     
-    /* Услуги - вертикальное расположение */
     .usluge__offer {
         flex-direction: column;
         gap: 30px;
@@ -1289,39 +1290,6 @@ body{
         margin: 0 auto;
     }
     
-    /* Цены - карусель */
-    .price__blocks-container {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 20px;
-        padding: 20px 0;
-        scrollbar-width: thin;
-        scrollbar-color: var(--accent) var(--light);
-    }
-    
-    .price__blocks-container::-webkit-scrollbar {
-        height: 8px;
-    }
-    
-    .price__blocks-container::-webkit-scrollbar-track {
-        background: var(--light);
-        border-radius: 4px;
-    }
-    
-    .price__blocks-container::-webkit-scrollbar-thumb {
-        background: var(--accent);
-        border-radius: 4px;
-    }
-    
-    .price__block {
-        flex: 0 0 auto;
-        width: 300px;
-        scroll-snap-align: start;
-        min-height: 380px;
-    }
-    
-    /* О клинике - вертикально */
     .about__adventure {
         grid-template-columns: 1fr;
     }
@@ -1330,7 +1298,6 @@ body{
         grid-template-columns: 1fr;
     }
     
-    /* Команда - вертикально */
     .team__doctors {
         grid-template-columns: 1fr;
     }
@@ -1339,17 +1306,15 @@ body{
         grid-template-columns: 1fr;
     }
     
-    /* Контакты - вертикально */
     .contacts__content {
         flex-direction: column;
         gap: 30px;
     }
     
     .contacts__map {
-        display: none; /* Скрываем карту на планшетах */
+        display: none;
     }
     
-    /* Подвал - вертикально */
     .footer__content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -1363,17 +1328,24 @@ body{
 
 /* Большие телефоны (481px - 768px) */
 @media (max-width: 768px) {
-    /* Секция main - полностью убираем фон */
+    /* Секция main - удаляем изображение и улучшаем видимость */
+    .hero {
+        background: none !important;
+        height: auto;
+        min-height: auto;
+    }
+    
     .main {
         margin: 30px auto;
-        padding: 0;
-        background: none !important;
-        width: 100%;
+        padding: 20px;
+        background: rgba(70, 130, 180, 0.95) !important;
+        width: 95%;
         max-width: none;
+        border-radius: 10px;
     }
     
     .main__text {
-        padding: 20px;
+        padding: 10px;
         text-align: center;
     }
     
@@ -1381,12 +1353,24 @@ body{
         font-size: 2.2em;
         line-height: 1.2;
         margin: 15px 0;
+        color: var(--white);
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
     
     .main__text_name {
         font-size: 1.4em;
         width: auto;
         margin: 0 auto;
+        max-width: 90%;
+        background-color: var(--accent);
+        color: var(--primary);
+        padding: 8px 15px;
+    }
+    
+    .main__text_wish {
+        color: var(--white);
+        font-size: 1em;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     }
     
     .main__button {
@@ -1394,19 +1378,41 @@ body{
         height: 60px;
         font-size: 1.1em;
         margin: 20px auto;
+        background-color: var(--accent);
+        color: var(--primary);
     }
     
-    /* Услуги - центрирование */
-    .usluge__header-osnova {
-        text-align: center;
-        display: block;
-        margin: 0 auto;
-        width: auto;
+    /* Секция usluge - уменьшение отступов */
+    .usluge {
+        padding-bottom: 50px;
+    }
+    
+    .usluge__header {
+        padding-top: 30px;
     }
     
     .usluge__header-best {
         font-size: 1.8em;
         text-align: center;
+        margin: 15px 0;
+    }
+    
+    .usluge__header-advantages {
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+    
+    .usluge__header-osnova {
+        text-align: center;
+        display: block;
+        margin: 0 auto 20px;
+        width: auto;
+        max-width: 90%;
+    }
+    
+    .usluge__offer {
+        margin-bottom: 50px;
+        gap: 20px;
     }
     
     .usluge__offer-glavnuy {
@@ -1414,11 +1420,25 @@ body{
         max-width: 350px;
         margin: 0 auto;
         text-align: center;
+        padding: 15px;
     }
     
-    /* Цены */
-    .price__blocks-container {
-        gap: 15px;
+    /* Форма записи - исправление центрирования */
+    .appointment__form {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto 30px;
+        border-radius: 10px;
+        padding: 25px 20px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .appointment__form-input input,
+    .appointment__form-input select {
+        padding: 12px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .price__block {
@@ -1429,9 +1449,9 @@ body{
     .price__header {
         font-size: 1.8em;
         padding: 20px 0;
+        margin: 20px 0 30px 0;
     }
     
-    /* О клинике */
     .about__header-text {
         font-size: 1.6em;
     }
@@ -1446,12 +1466,6 @@ body{
         font-size: 1.2em;
     }
     
-    /* Карусель - скрываем точки */
-    .carousel-dots {
-        display: none !important;
-    }
-    
-    /* Команда */
     .team__header-text {
         font-size: 1.8em;
     }
@@ -1471,7 +1485,6 @@ body{
         height: 120px;
     }
     
-    /* Отзывы - исправляем изображения */
     .review__header {
         font-size: 1.8em;
     }
@@ -1489,36 +1502,13 @@ body{
         object-fit: cover;
     }
     
-    /* Запись - форма на всю ширину */
     .appointment__header {
         font-size: 1.8em;
+        margin-bottom: 30px;
     }
     
-    .appointment__form {
-        width: 100%;
-        max-width: none;
-        margin: 0 0 30px 0;
-        border-radius: 0;
-        padding: 25px 15px;
-        box-shadow: none;
-        border: 1px solid var(--light);
-    }
-    
-    .appointment__form-input input,
-    .appointment__form-input select {
-        padding: 12px;
-        font-size: 16px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    /* Контакты */
     .contacts__header {
         font-size: 1.8em;
-    }
-    
-    .contacts__map {
-        display: none; /* Скрываем карту */
     }
     
     .contacts__info {
@@ -1531,6 +1521,7 @@ body{
     .contacts__schedule,
     .contacts__social {
         margin: 0 0 20px 0;
+        padding: 20px;
     }
     
     .contacts__social-links {
@@ -1549,6 +1540,8 @@ body{
 @media (max-width: 480px) {
     .main {
         margin: 20px auto;
+        padding: 15px;
+        background: rgba(70, 130, 180, 0.98) !important;
     }
     
     .main__text_slogan {
@@ -1567,20 +1560,52 @@ body{
         font-size: 1em;
     }
     
-    /* Услуги */
+    /* Секция usluge - еще меньше отступы */
+    .usluge {
+        padding-bottom: 30px;
+    }
+    
+    .usluge__header {
+        padding-top: 20px;
+    }
+    
     .usluge__header-best {
         font-size: 1.6em;
+        margin: 10px 0;
+    }
+    
+    .usluge__header-advantages {
+        margin-bottom: 20px;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+    
+    .usluge__offer {
+        margin-bottom: 30px;
+        gap: 15px;
     }
     
     .usluge__offer-glavnuy {
         width: 95%;
         padding: 15px;
+        margin-bottom: 10px;
     }
     
-    /* Цены */
-    .price__blocks-container {
-        gap: 10px;
-        padding: 15px 10px;
+    /* Форма записи - компактная версия */
+    .appointment__form {
+        max-width: 350px;
+        padding: 20px 15px;
+        margin: 0 auto 25px;
+    }
+    
+    .appointment__form-input {
+        margin-bottom: 15px;
+    }
+    
+    .appointment__form-input input,
+    .appointment__form-input select {
+        padding: 10px 12px;
+        font-size: 14px;
     }
     
     .price__block {
@@ -1591,15 +1616,17 @@ body{
     
     .price__header {
         font-size: 1.6em;
+        padding: 15px 0;
+        margin: 15px 0 25px 0;
     }
     
-    /* О клинике */
     .about__header-text {
         font-size: 1.4em;
     }
     
     .about__img {
         height: 200px;
+        margin: 0 auto 30px;
     }
     
     .carousel-btn {
@@ -1616,7 +1643,6 @@ body{
         right: 5px;
     }
     
-    /* Команда */
     .team__header-text {
         font-size: 1.6em;
     }
@@ -1636,7 +1662,6 @@ body{
         height: 100px;
     }
     
-    /* Отзывы */
     .review__header {
         font-size: 1.6em;
     }
@@ -1655,22 +1680,11 @@ body{
         margin: 0 5px 15px;
     }
     
-    /* Запись */
     .appointment__header {
         font-size: 1.6em;
+        margin-bottom: 25px;
     }
     
-    .appointment__form {
-        padding: 20px 10px;
-        margin: 0 0 25px 0;
-    }
-    
-    .appointment__form-input input,
-    .appointment__form-input select {
-        padding: 10px;
-    }
-    
-    /* Контакты */
     .contacts__header {
         font-size: 1.6em;
     }
@@ -1691,6 +1705,7 @@ body{
 @media (max-width: 360px) {
     .main {
         margin: 15px auto;
+        padding: 10px;
     }
     
     .main__text_slogan {
@@ -1707,7 +1722,26 @@ body{
         font-size: 0.9em;
     }
     
-    /* Цены */
+    /* Секция usluge - минимальные отступы */
+    .usluge {
+        padding-bottom: 20px;
+    }
+    
+    .usluge__header-best {
+        font-size: 1.4em;
+    }
+    
+    .usluge__offer-glavnuy {
+        padding: 12px;
+    }
+    
+    /* Форма записи - очень компактная */
+    .appointment__form {
+        max-width: 320px;
+        padding: 15px 10px;
+        margin: 0 auto 20px;
+    }
+    
     .price__block {
         width: 240px;
         min-height: 320px;
@@ -1717,16 +1751,15 @@ body{
         font-size: 1.4em;
     }
     
-    /* Отзывы */
     .review-img img {
         height: 160px;
     }
 }
 
-/* ===== ФОРМА НА КОМПЬЮТЕРАХ ===== */
+/* Форма на компьютерах - компактная версия */
 @media (min-width: 1025px) {
     .appointment__form {
-        max-width: 500px;
+        max-width: 450px;
         margin: 0 auto 40px;
         background: var(--white);
         padding: 30px;
@@ -1736,8 +1769,6 @@ body{
         width: 100%;
     }
 }
-
-/* ===== ОБЩИЕ ИСПРАВЛЕНИЯ ===== */
 
 /* Центрирование заголовка услуг */
 .usluge__header-osnova {
@@ -1752,6 +1783,10 @@ body{
 
 /* Скрытие точек карусели на всех устройствах */
 .carousel-dots {
+    display: none !important;
+}
+
+.carousel-dot {
     display: none !important;
 }
 
@@ -1772,14 +1807,7 @@ body {
 }
 
 /* Box-sizing для всех элементов */
-.appointment__form,
-.appointment__form-input input,
-.appointment__form-input select,
-.modal-form input,
-.modal-form select,
-.modal-form textarea,
-.review-img,
-.review-img img {
+* {
     box-sizing: border-box;
 }
 
@@ -1835,5 +1863,46 @@ body {
     .team__doctors-vrach,
     .team-doctors-vrach {
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .about__img {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+}
+
+/* Фикс для изображений отзывов на мобильных */
+@media (max-width: 768px) {
+    .review-img {
+        display: block;
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+    
+    .review-img img {
+        width: 100%;
+        height: auto;
+        max-height: 250px;
+    }
+}
+
+/* Фикс для выезжающих элементов формы */
+.appointment__form-input input,
+.appointment__form-input select,
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+    max-width: 100%;
+}
+
+/* Улучшение контрастности для секции main на мобильных */
+@media (max-width: 768px) {
+    .main__text_slogan {
+        color: var(--white);
+        font-weight: 600;
+    }
+    
+    .main__text_wish {
+        color: var(--light);
+        font-weight: 500;
     }
 }
