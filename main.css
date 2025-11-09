@@ -1224,29 +1224,7 @@ body{
         transform: translateY(0);
     }
 }
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .modal-content {
-        margin: 5% auto;
-        padding: 20px;
-        width: 95%;
-    }
-    
-    .modal h2 {
-        font-size: 1.5em;
-    }
-    
-    .modal-form input,
-    .modal-form select,
-    .modal-form textarea {
-        padding: 10px 12px;
-        font-size: 14px;
-    }
-}
-
-/* Адаптивность */
-/* ===== АДАПТИВНОСТЬ ===== */
+/* ===== АДАПТИВНОСТЬ С ИСПРАВЛЕНИЯМИ ===== */
 
 /* Планшеты и маленькие ноутбуки (1025px - 1300px) */
 @media (max-width: 1300px) {
@@ -1362,12 +1340,13 @@ body{
     /* Контакты - вертикально */
     .contacts__content {
         flex-direction: column;
+        gap: 30px;
     }
     
     .contacts__map {
-        height: 350px;
-        min-height: 350px;
+        height: 400px;
         width: 100%;
+        flex: none;
     }
     
     /* Подвал - вертикально */
@@ -1380,35 +1359,14 @@ body{
     .footer__copyright {
         text-align: center;
     }
-    
-    /* Навигация карусели цен */
-    .price__carousel-nav {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-    }
-    
-    .price__carousel-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--light);
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .price__carousel-dot.active {
-        background: var(--accent);
-        transform: scale(1.2);
-    }
 }
 
 /* Большие телефоны (481px - 768px) */
 @media (max-width: 768px) {
     .main {
         margin: 50px auto;
+        padding: 20px;
+        background: none !important; /* Удаляем фон на мобильных */
     }
     
     .main__text_slogan {
@@ -1434,6 +1392,9 @@ body{
     .usluge__header-osnova {
         font-size: 0.9em;
         padding: 8px 15px;
+        text-align: center; /* Центрируем текст */
+        display: inline-block;
+        margin: 0 auto;
     }
     
     /* Цены */
@@ -1466,6 +1427,11 @@ body{
         font-size: 1.2em;
     }
     
+    /* Скрываем точки карусели на мобильных */
+    .carousel-dots {
+        display: none !important;
+    }
+    
     /* Команда */
     .team__header-text {
         font-size: 2em;
@@ -1495,23 +1461,23 @@ body{
         height: 200px;
     }
     
-    /* Запись - исправленная форма */
+    /* Запись - форма на всю ширину */
     .appointment__header {
         font-size: 2em;
     }
     
     .appointment__form {
-        width: 90%;
-        max-width: 500px;
+        width: 100%;
+        max-width: none;
+        margin: 0 0 40px 0;
+        border-radius: 0;
         padding: 25px 20px;
-        margin: 0 auto 40px;
     }
     
     .appointment__form-input input,
     .appointment__form-input select {
         padding: 14px;
         font-size: 16px;
-        max-width: 100%;
     }
     
     /* Контакты */
@@ -1520,8 +1486,11 @@ body{
     }
     
     .contacts__map {
-        height: 300px;
-        min-height: 300px;
+        display: none; /* Скрываем карту на мобильных */
+    }
+    
+    .contacts__info {
+        width: 100%;
     }
     
     .contacts__social-links {
@@ -1536,6 +1505,11 @@ body{
 
 /* Маленькие телефоны (361px - 480px) */
 @media (max-width: 480px) {
+    .main {
+        margin: 30px auto;
+        padding: 15px;
+    }
+    
     .main__text_slogan {
         font-size: 2em;
         line-height: 40px;
@@ -1606,32 +1580,23 @@ body{
         margin: 10px 0;
     }
     
-    /* Запись - исправленная форма для маленьких экранов */
+    /* Запись */
     .appointment__header {
         font-size: 1.8em;
     }
     
     .appointment__form {
-        width: 95%;
-        max-width: 400px;
         padding: 20px 15px;
-        margin: 0 auto 40px;
     }
     
     .appointment__form-input input,
     .appointment__form-input select {
         padding: 12px;
-        font-size: 14px;
     }
     
     /* Контакты */
     .contacts__header {
         font-size: 1.8em;
-    }
-    
-    .contacts__map {
-        height: 250px;
-        min-height: 250px;
     }
     
     .contacts__social-links {
@@ -1651,6 +1616,11 @@ body{
 
 /* Очень маленькие телефоны (до 360px) */
 @media (max-width: 360px) {
+    .main {
+        margin: 20px auto;
+        padding: 10px;
+    }
+    
     .main__text_slogan {
         font-size: 1.8em;
         line-height: 35px;
@@ -1682,78 +1652,50 @@ body{
         min-height: 320px;
     }
     
-    /* Запись - исправленная форма для очень маленьких экранов */
+    /* Запись */
     .appointment__form {
-        width: 98%;
-        max-width: 350px;
         padding: 15px 10px;
-        margin: 0 auto 40px;
     }
-    
-    .appointment__form-input input,
-    .appointment__form-input select {
-        padding: 10px;
-        font-size: 14px;
-    }
-    
-    /* Контакты */
+}
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ ФОРМЫ НА КОМПЬЮТЕРАХ ===== */
+
+/* Форма на компьютерах - ограниченная ширина */
+.appointment__form {
+    max-width: 500px;
+    margin: 0 auto 40px;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ КАРУСЕЛИ ===== */
+
+/* Скрываем точки на всех устройствах */
+.carousel-dots {
+    display: none;
+}
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ КАРТЫ ===== */
+
+/* Скрываем карту на мобильных */
+@media (max-width: 768px) {
     .contacts__map {
-        height: 200px;
-        min-height: 200px;
+        display: none;
     }
 }
 
-/* ===== СПЕЦИАЛЬНЫЕ СЛУЧАИ ===== */
+/* ===== ДОПОЛНИТЕЛЬНЫЕ ИСПРАВЛЕНИЯ ===== */
 
-/* Портретная ориентация мобильных */
-@media (max-width: 768px) and (orientation: portrait) {
-    .hero {
-        height: 800px;
-        min-height: 500px;
-    }
-    
-    .main {
-        margin: 80px auto;
-    }
+/* Центрирование текста "Наши основные услуги" */
+.usluge__header-osnova {
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
 }
-
-/* Ландшафтная ориентация мобильных */
-@media (max-width: 900px) and (orientation: landscape) {
-    .hero {
-        height: 700px;
-        min-height: 400px;
-    }
-    
-    .main {
-        margin: 60px auto;
-    }
-    
-    .main__text_slogan {
-        font-size: 2.2em;
-        line-height: 45px;
-    }
-    
-    /* Для ландшафтной - 2 колонки в price */
-    .price__blocks-container {
-        grid-template-columns: repeat(2, 1fr);
-        display: grid;
-        overflow-x: visible;
-    }
-    
-    .price__block {
-        width: auto;
-    }
-}
-
-/* Высокие экраны */
-@media (min-height: 1000px) and (max-width: 768px) {
-    .hero {
-        height: 90vh;
-        min-height: 700px;
-    }
-}
-
-/* ===== ТЕХНИЧЕСКИЕ ИСПРАВЛЕНИЯ ===== */
 
 /* Предотвращение горизонтального скролла */
 body {
@@ -1774,13 +1716,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Контейнер для центрирования формы */
-.appointment__form-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
 /* Исправление для iOS */
 @supports (-webkit-touch-callout: none) {
     .appointment__form-input input,
@@ -1795,42 +1730,6 @@ body {
 @media (prefers-reduced-motion: no-preference) {
     .price__blocks-container {
         scroll-behavior: smooth;
-    }
-}
-
-/* Поддержка темной темы */
-@media (prefers-color-scheme: dark) {
-    /* Можно добавить стили для темной темы */
-}
-
-/* Стили для печати */
-@media print {
-    .header,
-    .footer,
-    .main__button,
-    .appointment__form,
-    .carousel-btn,
-    .price__carousel-nav,
-    .contacts__social,
-    .modal {
-        display: none;
-    }
-    
-    .hero {
-        background: none;
-        height: auto;
-    }
-    
-    .main {
-        background: white;
-        color: black;
-        margin: 20px auto;
-    }
-    
-    .main__text_name,
-    .main__text_slogan,
-    .main__text_wish {
-        color: black;
     }
 }
 
@@ -1875,4 +1774,10 @@ body {
 .team__doctors-vrach,
 .team-doctors-vrach {
     max-width: 100%;
+}
+
+/* Исправление для iframe в мобильных браузерах */
+.contacts__map iframe {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
