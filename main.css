@@ -1906,3 +1906,15 @@ body {
         font-weight: 500;
     }
 }
+
+/* Альтернативные варианты селекторов для карусели */
+.carousel .navigation,
+.carousel .indicators,
+.carousel .dots,
+.carousel .controls,
+[class*="carousel"] [class*="nav"],
+[class*="carousel"] [class*="indicator"],
+[class*="carousel"] [class*="dot"],
+[class*="carousel"] [class*="control"] {
+    display: none !important;
+}
