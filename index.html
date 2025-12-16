@@ -11,15 +11,10 @@
     <section class="hero">
         <div class="bg_color">
             <header class="header">
-
-
                 <a href="https://2gis.ru/yakutsk/geo/7037510072926397" class="adres">
-                    
-                    
-                <div class="adres__logo">
-                    <img src="img/logo.jpg" alt="логотип">
-                </div>
-
+                    <div class="adres__logo">
+                        <img src="img/logo.jpg" alt="логотип">
+                    </div>
                     <div class="adres__text">
                         <div class="adres__dom">
                             Улица Петра Алексеева, 4/2
@@ -28,25 +23,36 @@
                             Саха Якутия, г. Якутск
                         </div>
                     </div>
-                    
                 </a>
-    
-                <div class="time">
-                    <div class="time__text">
-                        Ежедневно с 11:00 до 21:00
+            
+                <!-- Гамбургер кнопка -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            
+                <!-- Контейнер для остальных элементов -->
+                <div class="header-content" id="headerContent">
+                    <div class="time">
+                        <div class="time__text">
+                            Ежедневно с 11:00 до 21:00
+                        </div>
                     </div>
+            
+                    <a href="mailto:744646@mail.ru" class="contacts">
+                        <div class="contacts__title">По всем вопросам пишите по:</div>
+                        <div class="contacts__mail">744646@mail.ru</div>
+                    </a>
+            
+                    <a href="tel:89679284280" class="contacts">
+                        <div class="contacts__title">По всем вопросам звоните по:</div>
+                        <div class="contacts__mail">89142744646</div>
+                    </a>
                 </div>
-    
-                <a href="mailto:744646@mail.ru" class="contacts">
-                    <div class="contacts__title">По всем вопросам пишите по:</div>
-                    <div class="contacts__mail">744646@mail.ru</div>
-                </a>
-
-                <a href="tel:89679284280" class="contacts">
-                    <div class="contacts__title">По всем вопросам звоните по:</div>
-                    <div class="contacts__mail">89142744646</div>
-                </a>
-                
+            
+                <!-- Оверлей -->
+                <div class="overlay" id="overlay"></div>
             </header>
         </div>
 
@@ -761,6 +767,43 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }
+        }
+    });
+    </script>
+
+<script>
+    // Гамбургер меню
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const headerContent = document.getElementById('headerContent');
+        const overlay = document.getElementById('overlay');
+        const body = document.body;
+    
+        if (menuToggle && headerContent && overlay) {
+            menuToggle.addEventListener('click', function() {
+                headerContent.classList.toggle('active');
+                overlay.classList.toggle('active');
+                this.classList.toggle('active');
+                body.style.overflow = headerContent.classList.contains('active') ? 'hidden' : '';
+            });
+    
+            overlay.addEventListener('click', function() {
+                headerContent.classList.remove('active');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.style.overflow = '';
+            });
+    
+            // Закрытие меню при клике на ссылку
+            const menuLinks = headerContent.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    headerContent.classList.remove('active');
+                    overlay.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    body.style.overflow = '';
+                });
+            });
         }
     });
     </script>
