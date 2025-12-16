@@ -445,15 +445,15 @@
                 Запись на прием
             </div>
     
-            <div class="appointment__form">
+            <div class="appointment__form" id="appointmentForm">
                 <div class="appointment__form-input">
-                    <input type="text" placeholder="Ваше имя">
+                    <input type="text" placeholder="Ваше имя" id="appointmentName" required>
                 </div>
                 <div class="appointment__form-input">
-                    <input type="tel" placeholder="Ваш телефон">
+                    <input type="tel" placeholder="Ваш телефон" id="appointmentPhone" required pattern="[0-9+\-() ]+" title="Введите номер телефона">
                 </div>
                 <div class="appointment__form-input">
-                    <select>
+                    <select id="appointmentService" required>
                         <option value="">Выберите услугу</option>
                         <option value="consult">Консультация</option>
                         <option value="treatment">Лечение зубов</option>
@@ -463,7 +463,7 @@
                         <option value="surgery">Хирургия</option>
                     </select>
                 </div>
-                <button class="appointment__form-button">Записаться</button>
+                <button type="button" class="appointment__form-button" onclick="submitAppointment()">Записаться</button>
             </div>
     
             <div class="appointment__contacts">
@@ -567,27 +567,29 @@
         </div>
     </footer>
 
-    <!-- Модальное окно -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Узнать точную цену</h2>
-            <form class="modal-form">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="tel" placeholder="Ваш телефон" required>
-                <input type="email" placeholder="Ваш email">
-                <select>
-                    <option value="">Выберите услугу</option>
-                    <option value="consult">Консультация</option>
-                    <option value="treatment">Лечение зубов</option>
-                    <option value="implant">Имплантация</option>
-                    <option value="braces">Брекеты</option>
-                </select>
-                <textarea placeholder="Дополнительная информация"></textarea>
-                <button type="submit">Отправить заявку</button>
-            </form>
-        </div>
+        <<!-- Модальное окно -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Узнать точную цену</h2>
+        <form class="modal-form" id="modalForm" onsubmit="submitModalForm(event)">
+            <input type="text" id="modalName" placeholder="Ваше имя" required>
+            <input type="tel" id="modalPhone" placeholder="Ваш телефон" required>
+            <input type="email" id="modalEmail" placeholder="Ваш email">
+            <select id="modalService" required>
+                <option value="">Выберите услугу</option>
+                <option value="consult">Консультация</option>
+                <option value="treatment">Лечение зубов</option>
+                <option value="implant">Имплантация</option>
+                <option value="braces">Брекеты</option>
+                <option value="cleaning">Чистка зубов</option>
+                <option value="surgery">Хирургия</option>
+            </select>
+            <textarea id="modalComment" placeholder="Дополнительная информация"></textarea>
+            <button type="submit">Отправить заявку</button>
+        </form>
     </div>
+</div>
 
     <script>
         function openModal() {
@@ -805,6 +807,156 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         }
+    });
+    </script>
+
+<script>
+    // === НАСТРОЙТЕ ЭТИ ДАННЫЕ ===
+    const TELEGRAM_BOT_TOKEN = '8378213561:AAFV3pg8EHsa-GnKTkFk_qhWe7oYG3_V6Io';
+    const TELEGRAM_CHAT_ID = '1608712762';
+    // ===========================
+    
+    // Функция для основной формы записи
+    async function submitAppointment() {
+        const name = document.getElementById('appointmentName').value.trim();
+        const phone = document.getElementById('appointmentPhone').value.trim();
+        const serviceSelect = document.getElementById('appointmentService');
+        const service = serviceSelect.value;
+        const serviceText = serviceSelect.selectedOptions[0].text;
+        
+        if (!name || !phone || !service) {
+            alert('Пожалуйста, заполните все поля!');
+            return;
+        }
+        
+        const button = document.querySelector('.appointment__form-button');
+        button.disabled = true;
+        button.textContent = 'Отправка...';
+        
+        try {
+            await sendToTelegram(name, phone, serviceText, 'запись на прием');
+            alert('✅ Заявка отправлена! Мы свяжемся с вами в течение 15 минут.');
+            
+            document.getElementById('appointmentName').value = '';
+            document.getElementById('appointmentPhone').value = '';
+            serviceSelect.selectedIndex = 0;
+            
+        } catch (error) {
+            alert('❌ Ошибка отправки. Позвоните нам: 8 (914) 274-46-46');
+        } finally {
+            button.disabled = false;
+            button.textContent = 'Записаться';
+        }
+    }
+    
+    // Функция для модальной формы (расчет цены)
+    async function submitModalForm(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('modalName').value.trim();
+        const phone = document.getElementById('modalPhone').value.trim();
+        const email = document.getElementById('modalEmail').value.trim();
+        const serviceSelect = document.getElementById('modalService');
+        const service = serviceSelect.value;
+        const serviceText = serviceSelect.selectedOptions[0].text;
+        const comment = document.getElementById('modalComment').value.trim();
+        
+        if (!name || !phone || !service) {
+            alert('Пожалуйста, заполните обязательные поля');
+            return;
+        }
+        
+        const button = event.target.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Отправка...';
+        
+        try {
+            await sendToTelegram(name, phone, serviceText, 'расчет цены', email, comment);
+            alert('✅ Заявка на расчет цены отправлена! Мы свяжемся с вами в течение 15 минут.');
+            
+            closeModal();
+            document.getElementById('modalForm').reset();
+            
+        } catch (error) {
+            alert('❌ Ошибка отправки. Позвоните нам: 8 (914) 274-46-46');
+        } finally {
+            button.disabled = false;
+            button.textContent = originalText;
+        }
+    }
+    
+    // Общая функция отправки в Telegram
+    async function sendToTelegram(name, phone, service, type = 'запись', email = '', comment = '') {
+        const message = `
+    🏥 КЛИНИКА ДОКТОРА МЫРЕЕВА
+    📋 ${type.toUpperCase()}
+    
+    👤 Пациент: ${name}
+    📞 Телефон: ${phone}
+    ${email ? `📧 Email: ${email}\n` : ''}
+    🦷 Услуга: ${service}
+    ${comment ? `📝 Комментарий: ${comment}\n` : ''}
+    📍 Адрес: Якутск, ул. Петра Алексеева, 4/2
+    🕒 Время: ${new Date().toLocaleString('ru-RU')}
+    📱 Телефон клиники: 8 (914) 274-46-46
+    
+    ❗ СРОЧНО СВЯЗАТЬСЯ С КЛИЕНТОМ
+        `;
+        
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message
+            })
+        });
+        
+        const data = await response.json();
+        if (!data.ok) throw new Error('Telegram error: ' + (data.description || ''));
+    }
+    
+    // Функции модального окна
+    function openModal(service = '') {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'block';
+        
+        if (service) {
+            const select = document.getElementById('modalService');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === service) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+    }
+    
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+    
+    // Закрытие при клике вне окна
+    window.onclick = function(event) {
+        const modal = document.getElementById('modal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+    
+    // Обработка Enter в формах
+    document.addEventListener('DOMContentLoaded', function() {
+        // Основная форма
+        const inputs = document.querySelectorAll('.appointment__form-input input, .appointment__form-input select');
+        inputs.forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitAppointment();
+                }
+            });
+        });
     });
     </script>
 
