@@ -1599,7 +1599,7 @@ body{
         padding: 15px;
         margin-bottom: 10px;
     }
-    
+
     /* Форма записи - компактная версия */
     .appointment__form {
         max-width: 350px;
@@ -1731,6 +1731,31 @@ body{
         font-size: 0.9em;
     }
     
+    .team__competention {
+        grid-template-columns: 1fr;
+        gap: 15px; /* Уменьшаем отступы между блоками */
+        padding: 0 10px; /* Добавляем отступы по бокам */
+    }
+    
+    .team__competention-block {
+        padding: 15px;
+        margin: 0;
+        min-width: 0; /* Важно для предотвращения выхода за границы */
+    }
+    
+    .team__competention-header {
+        font-size: 16px;
+        margin-bottom: 10px;
+        word-wrap: break-word; /* Перенос длинных слов */
+    }
+    
+    .team__competention-text {
+        font-size: 14px;
+        line-height: 1.4;
+        white-space: normal; /* Отменяем nowrap если был */
+        word-break: break-word; /* Разрешаем перенос слов */
+    }
+
     /* Секция usluge - минимальные отступы */
     .usluge {
         padding-bottom: 20px;
