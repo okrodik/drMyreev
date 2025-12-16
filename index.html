@@ -592,28 +592,25 @@
 </div>
 
     <script>
-        function openModal() {
-            document.getElementById('modal').style.display = 'block';
-        }
-        
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-        
-        // Закрытие при клике вне окна
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target == modal) {
-                closeModal();
+function openModal(service = '') {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'block';
+    
+    // Если передана услуга, выбираем её в форме
+    if (service) {
+        const select = document.getElementById('modalService');
+        for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === service) {
+                select.selectedIndex = i;
+                break;
             }
         }
-        
-        // Обработка формы
-        document.querySelector('.modal-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Спасибо! Мы свяжемся с вами для уточнения цены.');
-            closeModal();
-        });
+    }
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
         </script>
 
 <script>
@@ -690,7 +687,7 @@
     });
     </script>
 
-// Добавьте этот скрипт перед закрывающим тегом </body>
+ </body>
 <script>
 // Плавная прокрутка к якорям
 document.addEventListener('DOMContentLoaded', function() {
