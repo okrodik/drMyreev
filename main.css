@@ -1901,6 +1901,12 @@ body {
         background: rgba(44, 62, 80, 0.85);
     }
 
+    .main__logo {
+        display: none;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
     .main__logo_img {
         width: 100px;
         height: 100px;
@@ -2034,6 +2040,12 @@ body {
         padding: 15px 10px;
         margin: 15px auto;
         background: rgba(44, 62, 80, 0.85);
+    }
+
+    .main__logo {
+        display: none;
+        margin-right: 0;
+        margin-bottom: 25px;
     }
 
     .main__logo_img {
