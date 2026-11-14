@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
     <link rel="stylesheet" href="main.css">
     <title>Клиника Доктора Мыреева</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/img/site.webmanifest">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Клиника доктора Мыреева" />
@@ -17,7 +24,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Клиника доктора Мыреева" />
     <meta name="twitter:description" content="Современная стоматология в Якутске" />
-    <meta name="twitter:image" content="https://ваш-сайт.ru/img/logo-og.jpg" />
+    <meta name="twitter:image" content="https://drmyreev.ru/img/logo-og.jpg" />
 </head>
 <body>
 
@@ -36,7 +43,7 @@
     </div>
 </div>
 
-<!-- ШАПКА (sticky, работает по всему сайту) -->
+<!-- ШАПКА -->
 <header class="header-wrap">
     <div class="header">
         <a href="https://2gis.ru/yakutsk/geo/7037510072926397" class="adres">
@@ -49,7 +56,6 @@
             </div>
         </a>
 
-        <!-- Гамбургер -->
         <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
             <span></span>
             <span></span>
@@ -57,26 +63,22 @@
         </button>
 
         <div class="header-content" id="headerContent">
-                        <!-- Навигация по секциям -->
             <nav class="header-nav">
                 <a href="#usluge" class="header-nav__link">Услуги</a>
+                <a href="#about" class="header-nav__link">О нас</a>
                 <a href="#review" class="header-nav__link">Отзывы</a>
                 <a href="#appointment" class="header-nav__link">Запись</a>
                 <a href="#contacts" class="header-nav__link">Контакты</a>
             </nav>
 
-            <div class="adres__text">
+            <div class="adres__text header-address">
                 <div class="adres__dom">г. Якутск, ул. Петра Алексеева 4/2</div>
             </div>
 
-
-
-            <!-- Кнопка ЗАПИСЬ -->
             <button type="button" class="contacts contacts__btn" onclick="openAppointmentModal()" aria-label="Записаться на приём">
                 <div class="contacts__mail">ЗАПИСЬ</div>
             </button>
 
-            <!-- Телефон -->
             <a href="tel:+79142744646" class="contacts" aria-label="Позвонить" title="8 (914) 274-46-46">
                 <span class="contacts__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -86,30 +88,34 @@
             </a>
         </div>
 
-        <!-- Оверлей -->
         <div class="overlay" id="overlay"></div>
     </div>
 </header>
 
-<!-- HERO -->
+<!-- ЗЕЛЁНЫЙ ОСТРОВОК С ЛОГОТИПОМ -->
+<section class="intro">
+    <div class="intro__inner">
+        <div class="intro__text">
+            Полный спектр стоматологической помощи для здоровья и красивой улыбки
+        </div>
+        <div class="intro__logo">
+            <img src="img/LOGO1.jpg" alt="Логотип клиники доктора Мыреева">
+        </div>
+    </div>
+</section>
+
 <!-- HERO -->
 <section class="hero">
     <div class="main">
-                <div class="main__photo">
+        <div class="main__photo">
             <img src="img/vrach.jpg" alt="Главный врач — Мыреев Павел Валентинович">
         </div>
         <div class="main__text">
-    <div class="main__text_name">Дорогие друзья!</div>
-    <div class="main__text_wish">
-        Я, Мыреев Павел Валентинович, практикующий стоматолог хирург-имплантолог, основатель и главный врач клиники, рад приветствовать вас на нашем сайте.
-<br><br>
-Уже более 20 лет я помогаю людям возвращать здоровые и красивые улыбки. 
-<br><br>
-Выбирая «Авторскую клинику Доктора Мыреева», Вы в первую очередь выбираете КАЧЕСТВО И ПРОФЕССИОНАЛИЗМ. Наши специалисты всегда помогут Вам в решении стоматологических проблем, подберут индивидуальный план лечения, который позволит максимально эффективно и быстро достичь необходимого результата. Мы гарантируем БЕЗОПАСНОСТЬ И КОМФОРТ лечения, и наши сотрудники сделают всё, чтобы Вам было удобно и приятно лечиться у нас.
-    </div>
-</div>
-
-
+            <div class="main__text_name">Дорогие друзья!</div>
+            <div class="main__text_wish">
+                Меня зовут Мыреев Павел Валентинович, я главный врач и основатель Авторской клиники Доктора Мыреева. Наша клиника - это место, где забота о пациентах стоит на первом месте.
+            </div>
+        </div>
     </div>
 </section>
 
@@ -123,32 +129,31 @@
         </div>
 
         <div class="usluge__offer">
-            <div class="usluge__offer-one usluge__offer-glavnuy">
+            <div class="usluge__offer-glavnuy">
                 <img src="img/usluge2.jpg" alt="улыбка" class="usluge__offer-logo">
                 <h3 class="usluge__offer-zagolovok">Лечение зубов</h3>
                 <p class="usluge__offer-opisanie">С чего начать лечение зубов? С личной консультации квалифицированного врача. объективного осмотра.</p>
-                <button class="main__button usluge__offer-button button_okno" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
+                <button class="usluge__offer-button" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
             </div>
-            <div class="usluge__offer-two usluge__offer-glavnuy">
+            <div class="usluge__offer-glavnuy">
                 <img src="img/imlant_new.jpg" alt="улыбка" class="usluge__offer-logo">
                 <h3 class="usluge__offer-zagolovok">Имплантация зубов</h3>
                 <p class="usluge__offer-opisanie">Один из самых эффективных методов лечения адентии. В костную ткань вживляется имплантат из сплава титана.</p>
-                <button class="main__button usluge__offer-button button_okno" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
+                <button class="usluge__offer-button" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
             </div>
-            <div class="usluge__offer-three usluge__offer-glavnuy">
+            <div class="usluge__offer-glavnuy">
                 <img src="img/breket_new.jpg" alt="улыбка" class="usluge__offer-logo">
                 <h3 class="usluge__offer-zagolovok">Исправление прикуса</h3>
                 <p class="usluge__offer-opisanie">В современном мире эта стоматологическая услуга необходима весьма значительному количеству людей.</p>
-                <button class="main__button usluge__offer-button button_okno" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
+                <button class="usluge__offer-button" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
             </div>
         </div>
     </div>
 </section>
 
 
-
 <!-- О НАС -->
-<section class="about">
+<section class="about" id="about">
     <div class="about__bg">
         <div class="about__header">
             <div class="about__header-text">"Клиника доктора Мыреева - современная стоматология с заботой о вашей улыбке"</div>
@@ -173,6 +178,8 @@
                     "Индивидуальный подход к каждому пациенту"
                     "Дружелюбный персонал, готовый ответить на все ваши вопросы"</div>
             </div>
+
+            
         </div>
         <div class="about__img">
             <img src="img/fdsfdsfds.jpg" alt="">
@@ -180,12 +187,8 @@
             <img src="img/ng.jpg" alt="">
             <img src="img/operas.jpg" alt="">
         </div>
-
-
     </div>
 </section>
-
-
 
 <!-- ОТЗЫВЫ -->
 <section class="review" id="review">
@@ -275,7 +278,7 @@
             </div>
 
             <div class="contacts__map">
-                <iframe id="map_965281090" frameborder="0" width="100%" height="600px" src="https://makemap.2gis.ru/widget?data=eJw1jk1qw0AMhe-ibocwM_6J4wOkdJddoCUL41HbgbE1yAokNb57ZbuVNkJP-t6bgTggY3hFGlA44gTtxwzyzAgtnLGTOyMYyEwZWTZ9hp4Sseov1jfu06suUdL6oWPAqeeYJdK4L37exoAPaJ39r8XA1274XHF_bheKo-h9Txoqjp1sYZw_HY6l1Ta1P9iiLl11U0AMK7Eol5uBocsXmuJuOUPqBNrtuCqLo3ON_jhbG0irvgO9dd764uSrRhMSDSpUitXslNL1GzG9b1vhOy6_o4JZfQ" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+                <iframe id="map_965281090" frameborder="0" src="https://makemap.2gis.ru/widget?data=eJw1jk1qw0AMhe-ibocwM_6J4wOkdJddoCUL41HbgbE1yAokNb57ZbuVNkJP-t6bgTggY3hFGlA44gTtxwzyzAgtnLGTOyMYyEwZWTZ9hp4Sseov1jfu06suUdL6oWPAqeeYJdK4L37exoAPaJ39r8XA1274XHF_bheKo-h9Txoqjp1sYZw_HY6l1Ta1P9iiLl11U0AMK7Eol5uBocsXmuJuOUPqBNrtuCqLo3ON_jhbG0irvgO9dd764uSrRhMSDSpUitXslNL1GzG9b1vhOy6_o4JZfQ" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
             </div>
         </div>
 
@@ -302,7 +305,6 @@
             <div class="footer__nav">
                 <div class="footer__nav-title">Навигация</div>
                 <div class="footer__nav-links">
-
                     <a href="#" class="footer__nav-link" onclick="openPrivacyModal(); return false;">Политика конфиденциальности</a>
                     <a href="#" class="footer__nav-link" onclick="openConsentModal(); return false;">Согласие на обработку данных</a>
                 </div>
@@ -521,7 +523,7 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- ЕДИНЫЙ СКРИПТ -->
+<!-- ЕДИНЫЙ СКРИПТ (без изменений) -->
 <!-- ============================================================ -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -648,7 +650,7 @@
         });
     }
 
-        function initSmoothScroll() {
+    function initSmoothScroll() {
         document.querySelectorAll('.footer__nav-link, .header-nav__link').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -658,7 +660,6 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                // Закрыть мобильное меню после клика
                 const content = document.getElementById('headerContent');
                 const overlay = document.getElementById('overlay');
                 const toggle = document.getElementById('menuToggle');
