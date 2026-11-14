@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
     <link rel="stylesheet" href="main.css">
-    <title>Клиника Доктора Мыреева</title>
+    <title>Клиника Доктора Мыреева — стоматология в Якутске</title>
 
-    <!-- Favicon -->
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
     <link rel="manifest" href="/img/site.webmanifest">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Клиника доктора Мыреева" />
     <meta property="og:description" content="Современная стоматология в Якутске. Лечение зубов, имплантация, брекеты." />
     <meta property="og:image" content="https://drmyreev.ru/img/logo-og.jpg" />
@@ -28,197 +26,293 @@
 </head>
 <body>
 
-<!-- Баннер согласия с cookie -->
+<!-- ============ COOKIE ============ -->
 <div id="cookieConsent" class="cookie-consent">
-    <div class="cookie-consent-content">
-        <div class="cookie-consent-text">
+    <div class="cookie-consent__inner">
+        <div class="cookie-consent__text">
             <strong>🍪 Мы используем файлы cookie</strong>
             <p>Продолжая использовать наш сайт, вы соглашаетесь на обработку файлов cookie и персональных данных в соответствии с
-            <a href="#" onclick="openPrivacyModal(); return false;">Политикой конфиденциальности</a>.</p>
+            <button type="button" class="cookie-consent__link" onclick="openPrivacyModal()">Политикой конфиденциальности</button>.</p>
         </div>
-        <div class="cookie-consent-buttons">
-            <button class="cookie-consent-btn cookie-consent-accept" onclick="acceptCookies()">Принять</button>
-            <button class="cookie-consent-btn cookie-consent-details" onclick="openPrivacyModal(); return false;">Подробнее</button>
+        <div class="cookie-consent__actions">
+            <button class="btn btn--primary btn--sm" onclick="acceptCookies()">Принять</button>
+            <button class="btn btn--ghost-light btn--sm" onclick="openPrivacyModal()">Подробнее</button>
         </div>
     </div>
 </div>
 
-<!-- ШАПКА -->
-<header class="header-wrap">
-    <div class="header">
-        <a href="https://2gis.ru/yakutsk/geo/7037510072926397" class="adres">
-            <div class="adres__logo">
-                <img src="img/LOGO1.jpg" alt="логотип">
-            </div>
-            <div class="adres__text">
-                <div class="adres__dom">Авторская клиника Доктора Мыреева</div>
-                <div class="adres__cities">СТОМАТОЛОГИЯ &amp; SPA</div>
-            </div>
+<!-- ============ ШАПКА ============ -->
+<header class="site-header">
+    <div class="site-header__inner">
+        <a href="index.html" class="brand">
+            <span class="brand__logo"><img src="img/LOGO1.jpg" alt="Логотип клиники Доктора Мыреева"></span>
+            <span class="brand__text">
+                <span class="brand__name">Авторская клиника Доктора Мыреева</span>
+                <span class="brand__tag">Стоматология</span>
+            </span>
         </a>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="burger" id="menuToggle" aria-label="Открыть меню" aria-controls="headerContent" aria-expanded="false">
+            <span></span><span></span><span></span>
         </button>
 
-        <div class="header-content" id="headerContent">
-            <nav class="header-nav">
-                <a href="#usluge" class="header-nav__link">Услуги</a>
-                <a href="#about" class="header-nav__link">О нас</a>
-                <a href="#review" class="header-nav__link">Отзывы</a>
-                <a href="#appointment" class="header-nav__link">Запись</a>
-                <a href="#contacts" class="header-nav__link">Контакты</a>
+        <div class="site-header__panel" id="headerContent">
+            <nav class="main-nav" aria-label="Основная навигация">
+                <a href="#usluge" class="main-nav__link">Услуги</a>
+                <a href="#about" class="main-nav__link">О нас</a>
+                <a href="#review" class="main-nav__link">Отзывы</a>
+                <a href="#appointment" class="main-nav__link">Запись</a>
+                <a href="#contacts" class="main-nav__link">Контакты</a>
             </nav>
 
-            <div class="adres__text header-address">
-                <div class="adres__dom">г. Якутск, ул. Петра Алексеева 4/2</div>
-            </div>
+            <p class="site-header__address">г. Якутск, ул. Петра Алексеева 4/2</p>
 
-            <button type="button" class="contacts contacts__btn" onclick="openAppointmentModal()" aria-label="Записаться на приём">
-                <div class="contacts__mail">ЗАПИСЬ</div>
-            </button>
-
-            <a href="tel:+79142744646" class="contacts" aria-label="Позвонить" title="8 (914) 274-46-46">
-                <span class="contacts__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="site-header__actions">
+                <button type="button" class="btn btn--primary btn--sm" onclick="openAppointmentModal()">Записаться</button>
+                <a href="tel:+79142744646" class="icon-btn" aria-label="Позвонить" title="8 (914) 274-46-46">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     </svg>
-                </span>
-            </a>
+                </a>
+            </div>
         </div>
 
         <div class="overlay" id="overlay"></div>
     </div>
 </header>
 
-<!-- ЗЕЛЁНЫЙ ОСТРОВОК С ЛОГОТИПОМ -->
-<section class="intro">
-    <div class="intro__inner">
-        <div class="intro__text">
-            Полный спектр стоматологической помощи для здоровья и красивой улыбки
-        </div>
-        <div class="intro__logo">
-            <img src="img/LOGO1.jpg" alt="Логотип клиники доктора Мыреева">
-        </div>
-    </div>
-</section>
+<main>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="main">
-        <div class="main__photo">
-            <img src="img/vrach.jpg" alt="Главный врач — Мыреев Павел Валентинович">
+    <!-- ============ ПРОМО-ПОЛОСА ============ -->
+    <section class="promo">
+        <div class="promo__inner">
+            <p class="promo__text">Полный спектр стоматологической помощи для здоровья и красивой улыбки</p>
+            <div class="promo__logo"><img src="img/LOGO1.jpg" alt="Логотип клиники"></div>
         </div>
-        <div class="main__text">
-            <div class="main__text_name">Дорогие друзья!</div>
-            <div class="main__text_wish">
-                Меня зовут Мыреев Павел Валентинович, я главный врач и основатель Авторской клиники Доктора Мыреева. Наша клиника - это место, где забота о пациентах стоит на первом месте.
+    </section>
+
+    <!-- ============ ГЛАВНЫЙ ВРАЧ ============ -->
+    <section class="doctor">
+        <div class="doctor__card">
+            <div class="doctor__media">
+                <img src="img/vrach.jpg" alt="Главный врач — Мыреев Павел Валентинович">
+            </div>
+            <div class="doctor__body">
+                <span class="chip">Дорогие друзья!</span>
+                <p class="doctor__text">Меня зовут Мыреев Павел Валентинович, я главный врач и основатель Авторской клиники Доктора Мыреева. Наша клиника — это место, где забота о пациентах стоит на первом месте.</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- УСЛУГИ -->
-<section class="usluge" id="usluge">
-    <div class="usluge__bg">
-        <div class="usluge__header">
-            <h2 class="usluge__header-osnova">Наши основные услуги</h2>
-            <h1 class="usluge__header-best">То, в чем мы лучшие</h1>
-            <h4 class="usluge__header-advantages">Все процедуры проходят в комфортных кабинках, очень стерильные, в соответствии с высокими стандартами</h4>
+    <!-- ============ УСЛУГИ ============ -->
+    <section class="section services" id="usluge">
+        <header class="section__head">
+            <span class="chip chip--outline">Наши основные услуги</span>
+            <h2 class="section__title">То, в чём мы лучшие</h2>
+            <p class="section__lead">Все процедуры проходят в комфортных кабинетах, очень стерильных, в соответствии с высокими стандартами.</p>
+        </header>
+
+        <div class="card-grid">
+            <article class="service-card">
+                <div class="service-card__media"><img src="img/usluge2.jpg" alt="Лечение зубов"></div>
+                <h3 class="service-card__title">Лечение зубов</h3>
+                <p class="service-card__text">С чего начать лечение зубов? С личной консультации квалифицированного врача и объективного осмотра.</p>
+                <button class="btn btn--primary service-card__btn" onclick="openModal('treatment')">Узнать цену</button>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card__media"><img src="img/imlant_new.jpg" alt="Имплантация зубов"></div>
+                <h3 class="service-card__title">Имплантация зубов</h3>
+                <p class="service-card__text">Один из самых эффективных методов лечения адентии. В костную ткань вживляется имплантат из сплава титана.</p>
+                <button class="btn btn--primary service-card__btn" onclick="openModal('implant')">Узнать цену</button>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card__media"><img src="img/breket_new.jpg" alt="Исправление прикуса"></div>
+                <h3 class="service-card__title">Исправление прикуса</h3>
+                <p class="service-card__text">В современном мире эта стоматологическая услуга необходима весьма значительному количеству людей.</p>
+                <button class="btn btn--primary service-card__btn" onclick="openModal('braces')">Узнать цену</button>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============ О НАС ============ -->
+    <section class="section about" id="about">
+        <div class="about__head">
+            <h2 class="section__title">Клиника доктора Мыреева — современная стоматология с заботой о вашей улыбке</h2>
         </div>
 
-        <div class="usluge__offer">
-            <div class="usluge__offer-glavnuy">
-                <img src="img/usluge2.jpg" alt="улыбка" class="usluge__offer-logo">
-                <h3 class="usluge__offer-zagolovok">Лечение зубов</h3>
-                <p class="usluge__offer-opisanie">С чего начать лечение зубов? С личной консультации квалифицированного врача. объективного осмотра.</p>
-                <button class="usluge__offer-button" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
-            </div>
-            <div class="usluge__offer-glavnuy">
-                <img src="img/imlant_new.jpg" alt="улыбка" class="usluge__offer-logo">
-                <h3 class="usluge__offer-zagolovok">Имплантация зубов</h3>
-                <p class="usluge__offer-opisanie">Один из самых эффективных методов лечения адентии. В костную ткань вживляется имплантат из сплава титана.</p>
-                <button class="usluge__offer-button" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
-            </div>
-            <div class="usluge__offer-glavnuy">
-                <img src="img/breket_new.jpg" alt="улыбка" class="usluge__offer-logo">
-                <h3 class="usluge__offer-zagolovok">Исправление прикуса</h3>
-                <p class="usluge__offer-opisanie">В современном мире эта стоматологическая услуга необходима весьма значительному количеству людей.</p>
-                <button class="usluge__offer-button" onclick="openModal()">УЗНАТЬ ЦЕНУ</button>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="feature-grid">
+            <article class="feature">
+                <h3 class="feature__title">Опытный врач</h3>
+                <ul class="feature__list">
+                    <li>Сертифицированный специалист со стажем более 15 лет</li>
+                    <li>Регулярное повышение квалификации в ведущих центрах России</li>
+                    <li>Личный приём основателя клиники — без «конвейера»</li>
+                </ul>
+            </article>
 
+            <article class="feature">
+                <h3 class="feature__title">Современные методы</h3>
+                <ul class="feature__list">
+                    <li>Только проверенные мировые методики и материалы</li>
+                    <li>Цифровая диагностика для точной постановки диагноза</li>
+                    <li>Безболезненное лечение с современными анестетиками</li>
+                </ul>
+            </article>
 
-<!-- О НАС -->
-<section class="about" id="about">
-    <div class="about__bg">
-        <div class="about__header">
-            <div class="about__header-text">"Клиника доктора Мыреева - современная стоматология с заботой о вашей улыбке"</div>
+            <article class="feature">
+                <h3 class="feature__title">Комфортная атмосфера</h3>
+                <ul class="feature__list">
+                    <li>Уютные кабинеты с ощущением домашнего уюта</li>
+                    <li>Индивидуальный подход к каждому пациенту</li>
+                    <li>Дружелюбный персонал, готовый ответить на вопросы</li>
+                </ul>
+            </article>
         </div>
 
-        <div class="about__adventure">
-            <div class="about__advenure-text">
-                <div class="about__advenure-text-header">Опытные врачи</div>
-                <div class="about__advenure-text-slova">"Команда сертифицированных специалистов со стажем работы от 10 лет"
-                    "Регулярное повышение квалификации в ведущих стоматологических центрах России"
-                    "Узкая специализация каждого врача для максимального качества лечения"</div>
-            </div>
-            <div class="about__advenure-text">
-                <div class="about__advenure-text-header">Современные методы</div>
-                <div class="about__advenure-text-slova">"Используем только проверенные мировые методики и материалы"
-                    "Цифровая диагностика для точной постановки диагноза"
-                    "Безболезненное лечение с применением современных анестетиков"</div>
-            </div>
-            <div class="about__advenure-text">
-                <div class="about__advenure-text-header">Комфортная атмосфера</div>
-                <div class="about__advenure-text-slova">"Уютные кабинеты, создающие ощущение домашнего уюта"
-                    "Индивидуальный подход к каждому пациенту"
-                    "Дружелюбный персонал, готовый ответить на все ваши вопросы"</div>
-            </div>
-
-            
-        </div>
         <div class="about__img">
             <img src="img/fdsfdsfds.jpg" alt="">
             <img src="img/cabinet.png" alt="">
             <img src="img/ng.jpg" alt="">
             <img src="img/operas.jpg" alt="">
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ОТЗЫВЫ -->
-<section class="review" id="review">
-    <div class="review__bg">
-        <div class="review__header">Отзывы</div>
+    <!-- ============ ВРАЧ ============ -->
+    <section class="section team" id="team">
+        <header class="section__head">
+            <span class="chip chip--outline">Наш врач</span>
+            <h2 class="section__title">Врач, которому доверяют</h2>
+            <p class="section__lead">Пациентов принимает лично основатель клиники — без «конвейера» и передачи ассистентам.</p>
+        </header>
 
-        <div class="review-otziv">По отзывам нашла эту клинику и не пожалела. Приятная атмосфера, вежливая девушка-администратор, качественный ремонт помещения, врач-профессионал и отличная ассистентка👍🏻. Намерена лечить зубы здесь. Также хочу попробовать кедровую бочку и массаж, оттуда исходит только положительная, живительная энергетика!</div>
-        <div class="review-otziv">Благодарю за очень профессиональную, оперативную работу администратора и доктора клиники Павла Валентиновича. Полечил себе зуб очень быстро и качественно. Доктор очень аккуратный, внимательный, все очень доходчиво объяснил. Особенно хочется отметить администратора клиники, большой профессионал своего дела, быстро меня записала на прием к доктору, даже провела экскурсию в кабинет СПА процедуры. Цены на услуги очень приятные и ниже чем у остальных клиник. Клиника чистая, уютная, царит домашняя атмосфера. Очень доволен результатом и однозначно всем рекомендую, не пожалеете! Коллективу клиники пожелаю простого человеческого счастья, здоровья, удачи и благополучия в ваших семьях. А также профессионального роста, успехов, процветания и только благодарных клиентов!👍🏼🙏🏼🤗</div>
-        <div class="review-otziv">Записали быстро на прием по острой боли на удаление зуба. Удалили зуб нормально, без боли и по времени. Только меня одно расстроило, что хирург был без медицинской маски. По поводу прозрачной маски: я не заметил её, так как сильно болел зуб, я человек в возрасте, поэтому не заметил. Прошу меня извинить за мою ошибку. Большое вам спасибо!</div>
-        <div class="review-otziv">Была на профессиональной гигиене у доктора Павла Валентиновича. Процедура прошла комфортно, по поводу лечения доступно все объяснил. Очень внимательный, аккуратный. Обязательно приду снова. Клиника чистая и светлая. Вернусь обязательно, т.к. чувствую себя в надежных руках. Большое спасибо!</div>
+        <article class="doctor-profile">
+            <div class="doctor-profile__media">
+                <img src="img/vrach.jpg" alt="Мыреев Павел Валентинович — главный врач клиники">
+            </div>
+            <div class="doctor-profile__body">
+                <h3 class="doctor-profile__name">Мыреев Павел Валентинович</h3>
+                <p class="doctor-profile__role">Главный врач и основатель клиники · врач-стоматолог</p>
+                <p class="doctor-profile__exp">Опыт работы — более 15 лет</p>
 
-        <div class="review-img"><img src="img/otziv1.png" alt=""></div>
-        <div class="review-img"><img src="img/otziv2.png" alt=""></div>
-        <div class="review-img"><img src="img/otziv3.png" alt=""></div>
-    </div>
-</section>
+                <ul class="doctor-profile__list">
+                    <li>Терапевтическая стоматология: лечение кариеса, пульпита, периодонтита</li>
+                    <li>Хирургическая стоматология: удаление, имплантация</li>
+                    <li>Профессиональная гигиена и профилактика</li>
+                    <li>Эстетическая реставрация зубов</li>
+                </ul>
 
-<!-- ЗАПИСЬ -->
-<section class="appointment" id="appointment">
-    <div class="appointment__bg">
-        <div class="appointment__header">Запись на прием</div>
+                <div class="doctor-profile__actions">
+                    <button class="btn btn--primary" onclick="openAppointmentModal()">Записаться к врачу</button>
+                    <a href="tel:+79142744646" class="btn btn--ghost-light" style="background:var(--primary-light);color:var(--dark);">Позвонить</a>
+                </div>
+            </div>
+        </article>
+    </section>
 
-        <div class="appointment__form" id="appointmentForm">
-            <div class="appointment__form-input">
+    <!-- ============ ЦЕНЫ (ТИЗЕР) ============ -->
+    <section class="section prices" id="prices">
+        <header class="section__head">
+            <span class="chip chip--outline">Прозрачные цены</span>
+            <h2 class="section__title">Популярные услуги</h2>
+            <p class="section__lead">Полный прайс-лист — на отдельной странице. Точную стоимость врач назовёт после осмотра.</p>
+        </header>
+
+        <div class="price-table">
+            <div class="price-row">
+                <span class="price-row__name">Консультация врача-стоматолога</span>
+                <span class="price-row__value">от 500 ₽</span>
+            </div>
+            <div class="price-row">
+                <span class="price-row__name">Лечение кариеса</span>
+                <span class="price-row__value">от 3 500 ₽</span>
+            </div>
+            <div class="price-row">
+                <span class="price-row__name">Профессиональная гигиена</span>
+                <span class="price-row__value">от 4 000 ₽</span>
+            </div>
+            <div class="price-row">
+                <span class="price-row__name">Имплантация (за 1 имплантат)</span>
+                <span class="price-row__value">от 35 000 ₽</span>
+            </div>
+            <div class="price-row">
+                <span class="price-row__name">Установка брекет-системы</span>
+                <span class="price-row__value">от 45 000 ₽</span>
+            </div>
+        </div>
+
+        <div class="prices__actions">
+            <button class="btn btn--primary" onclick="openPriceModal()">Смотреть прайс-лист</button>
+            <button class="btn btn--ghost-light" style="background:var(--primary-light);color:var(--dark);" onclick="openModal()">Узнать точную цену</button>
+        </div>
+    </section>
+
+    <!-- ============ КАК ПРОХОДИТ ПРИЁМ ============ -->
+    <section class="section process" id="process">
+        <header class="section__head">
+            <span class="chip chip--outline">Прозрачный процесс</span>
+            <h2 class="section__title">Как проходит приём</h2>
+        </header>
+
+        <ol class="steps">
+            <li class="step">
+                <span class="step__num">1</span>
+                <h3 class="step__title">Заявка</h3>
+                <p class="step__text">Оставьте заявку на сайте или позвоните — администратор подберёт удобное время.</p>
+            </li>
+            <li class="step">
+                <span class="step__num">2</span>
+                <h3 class="step__title">Звонок</h3>
+                <p class="step__text">Мы перезвоним в течение 15 минут, подтвердим запись и ответим на вопросы.</p>
+            </li>
+            <li class="step">
+                <span class="step__num">3</span>
+                <h3 class="step__title">Визит</h3>
+                <p class="step__text">Осмотр, диагностика, план лечения и согласование стоимости — без навязывания.</p>
+            </li>
+            <li class="step">
+                <span class="step__num">4</span>
+                <h3 class="step__title">Рекомендации</h3>
+                <p class="step__text">После лечения — памятка по уходу и напоминание о следующем визите.</p>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ============ ОТЗЫВЫ ============ -->
+    <section class="section reviews" id="review">
+        <header class="section__head">
+            <h2 class="section__title">Отзывы</h2>
+        </header>
+
+        <div class="reviews__list">
+            <blockquote class="review">По отзывам нашла эту клинику и не пожалела. Приятная атмосфера, вежливая девушка-администратор, качественный ремонт помещения, врач-профессионал и отличная ассистентка👍🏻. Намерена лечить зубы здесь. Также хочу попробовать кедровую бочку и массаж, оттуда исходит только положительная, живительная энергетика!</blockquote>
+            <blockquote class="review">Благодарю за очень профессиональную, оперативную работу администратора и доктора клиники Павла Валентиновича. Полечил себе зуб очень быстро и качественно. Доктор очень аккуратный, внимательный, всё доходчиво объяснил. Особенно хочется отметить администратора клиники — большой профессионал своего дела, быстро записала меня на приём, даже провела экскурсию в кабинет СПА-процедур. Цены очень приятные и ниже, чем в остальных клиниках. Клиника чистая, уютная, царит домашняя атмосфера. Однозначно рекомендую! Коллективу — счастья, здоровья, удачи и благополучия. А также профессионального роста, успехов и только благодарных клиентов!👍🏼🙏🏼🤗</blockquote>
+            <blockquote class="review">Записали быстро на приём по острой боли на удаление зуба. Удалили зуб нормально, без боли и по времени. Только одно расстроило — хирург был без медицинской маски. По поводу прозрачной маски: я не заметил её, так как сильно болел зуб, я человек в возрасте. Прошу извинить за мою ошибку. Большое спасибо!</blockquote>
+            <blockquote class="review">Была на профессиональной гигиене у доктора Павла Валентиновича. Процедура прошла комфортно, по поводу лечения доступно всё объяснил. Очень внимательный, аккуратный. Обязательно приду снова. Клиника чистая и светлая. Чувствую себя в надёжных руках. Большое спасибо!</blockquote>
+        </div>
+
+        <div class="reviews__gallery">
+            <div class="reviews__shot"><img src="img/otziv1.png" alt="Отзыв"></div>
+            <div class="reviews__shot"><img src="img/otziv2.png" alt="Отзыв"></div>
+            <div class="reviews__shot"><img src="img/otziv3.png" alt="Отзыв"></div>
+        </div>
+    </section>
+
+    <!-- ============ ЗАПИСЬ ============ -->
+    <section class="section booking" id="appointment">
+        <header class="section__head">
+            <h2 class="section__title">Запись на приём</h2>
+        </header>
+
+        <form class="booking__form" id="appointmentForm">
+            <div class="field">
                 <input type="text" placeholder="Ваше имя" id="appointmentName" required>
             </div>
-            <div class="appointment__form-input">
+            <div class="field">
                 <input type="tel" placeholder="Ваш телефон" id="appointmentPhone" required pattern="[0-9+\-() ]+" title="Введите номер телефона">
             </div>
-            <div class="appointment__form-input">
+            <div class="field">
                 <select id="appointmentService" required>
                     <option value="">Выберите услугу</option>
                     <option value="consult">Консультация</option>
@@ -229,101 +323,93 @@
                     <option value="surgery">Хирургия</option>
                 </select>
             </div>
-            <button type="button" class="appointment__form-button" onclick="submitAppointment()">Записаться</button>
+            <label class="consent-checkbox">
+                <input type="checkbox" id="bookingConsent" required>
+                <span>Согласен(на) на <button type="button" class="consent-link" onclick="openConsentModal()">обработку персональных данных</button></span>
+            </label>
+            <button type="button" class="btn btn--primary btn--block" onclick="submitAppointment()">Записаться</button>
+        </form>
+
+        <p class="booking__phone">Телефон для записи: <a href="tel:+79142744646">8 (914) 274-46-46</a></p>
+        <div class="booking__call">
+            <a href="tel:+79142744646" class="btn btn--primary">📞 Быстрый звонок</a>
         </div>
+    </section>
 
-        <div class="appointment__contacts">
-            <div class="appointment__contacts-phone">
-                Телефон для записи: <a href="tel:+79142744646">8 (914) 274-46-46</a>
-            </div>
-        </div>
+    <!-- ============ КОНТАКТЫ ============ -->
+    <section class="section contacts" id="contacts">
+        <header class="section__head">
+            <h2 class="section__title">Контакты</h2>
+        </header>
 
-        <div class="appointment__call-button">
-            <a href="tel:+79679284280" class="appointment__call-link">📞 Быстрый звонок</a>
-        </div>
-    </div>
-</section>
-
-<!-- КОНТАКТЫ -->
-<section class="contacts" id="contacts">
-    <div class="contacts__bg">
-        <div class="contacts__header">Контакты</div>
-
-        <div class="contacts__content">
+        <div class="contacts__grid">
             <div class="contacts__info">
-                <div class="contacts__address">
-                    <div class="contacts__address-title">Адрес:</div>
-                    <div class="contacts__address-text">Улица Петра Алексеева, 4/2</div>
-                    <div class="contacts__address-city">Саха Якутия, г. Якутск</div>
+                <div class="info-card">
+                    <h3 class="info-card__title">Адрес</h3>
+                    <p>Улица Петра Алексеева, 4/2</p>
+                    <p>Саха Якутия, г. Якутск</p>
                 </div>
-
-                <div class="contacts__phones">
-                    <div class="contacts__phones-title">Телефоны для связи:</div>
-                    <div class="contacts__phone"><a href="tel:+79142744646">8 (914) 274-46-46</a></div>
+                <div class="info-card">
+                    <h3 class="info-card__title">Телефоны для связи</h3>
+                    <p><a href="tel:+79142744646">8 (914) 274-46-46</a></p>
                 </div>
-
-                <div class="contacts__schedule">
-                    <div class="contacts__schedule-title">График работы:</div>
-                    <div class="contacts__schedule-text">Ежедневно с 10:00 до 20:00</div>
+                <div class="info-card">
+                    <h3 class="info-card__title">График работы</h3>
+                    <p>Ежедневно с 10:00 до 20:00</p>
                 </div>
-
-                <div class="contacts__social">
-                    <div class="contacts__social-title">Социальные сети:</div>
-                    <div class="contacts__social-links">
-                        <a href="https://wa.me/79142744646" class="contacts__social-link">WhatsApp</a>
-                        <a href="https://t.me/doctormyreev" class="contacts__social-link">Telegram</a>
-                        <a href="https://max.ru/u/f9LHodD0cOKuRtO3bGPkwKb0fdtOAMibD1cNgnsdWsUdrBiBsMaCDI0j8To" class="contacts__social-link">MAX</a>
+                <div class="info-card">
+                    <h3 class="info-card__title">Социальные сети</h3>
+                    <div class="social-links">
+                        <a href="https://wa.me/79142744646" class="btn btn--primary btn--sm">WhatsApp</a>
+                        <a href="https://t.me/doctormyreev" class="btn btn--primary btn--sm">Telegram</a>
+                        <a href="https://max.ru/u/f9LHodD0cOKuRtO3bGPkwKb0fdtOAMibD1cNgnsdWsUdrBiBsMaCDI0j8To" class="btn btn--primary btn--sm">MAX</a>
                     </div>
                 </div>
             </div>
 
             <div class="contacts__map">
-                <iframe id="map_965281090" frameborder="0" src="https://makemap.2gis.ru/widget?data=eJw1jk1qw0AMhe-ibocwM_6J4wOkdJddoCUL41HbgbE1yAokNb57ZbuVNkJP-t6bgTggY3hFGlA44gTtxwzyzAgtnLGTOyMYyEwZWTZ9hp4Sseov1jfu06suUdL6oWPAqeeYJdK4L37exoAPaJ39r8XA1274XHF_bheKo-h9Txoqjp1sYZw_HY6l1Ta1P9iiLl11U0AMK7Eol5uBocsXmuJuOUPqBNrtuCqLo3ON_jhbG0irvgO9dd764uSrRhMSDSpUitXslNL1GzG9b1vhOy6_o4JZfQ" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+                <iframe id="map_965281090" src="https://makemap.2gis.ru/widget?data=eJw1jk1qw0AMhe-ibocwM_6J4wOkdJddoCUL41HbgbE1yAokNb57ZbuVNkJP-t6bgTggY3hFGlA44gTtxwzyzAgtnLGTOyMYyEwZWTZ9hp4Sseov1jfu06suUdL6oWPAqeeYJdK4L37exoAPaJ39r8XA1274XHF_bheKo-h9Txoqjp1sYZw_HY6l1Ta1P9iiLl11U0AMK7Eol5uBocsXmuJuOUPqBNrtuCqLo3ON_jhbG0irvgO9dd764uSrRhMSDSpUitXslNL1GzG9b1vhOy6_o4JZfQ" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
             </div>
         </div>
 
         <div class="contacts__license">
-            <button class="contacts__license-button" onclick="openLicenseModal()">📜 Лицензия клиники</button>
+            <button class="btn btn--primary" onclick="openLicenseModal()">📜 Лицензия клиники</button>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ФУТЕР -->
-<footer class="footer">
-    <div class="footer__bg">
-        <div class="footer__content">
-            <div class="footer__contacts">
-                <div class="footer__contacts-title">Контакты</div>
-                <div class="footer__contacts-address">
-                    Улица Петра Алексеева, 4/2<br>
-                    Саха Якутия, г. Якутск
-                </div>
-                <div class="footer__contacts-phone"><a href="tel:+79142744646">8 (914) 274-46-46</a></div>
-                <div class="footer__contacts-email"><a href="mailto:744646@mail.ru">744646@mail.ru</a></div>
-            </div>
+</main>
 
-            <div class="footer__nav">
-                <div class="footer__nav-title">Навигация</div>
-                <div class="footer__nav-links">
-                    <a href="#" class="footer__nav-link" onclick="openPrivacyModal(); return false;">Политика конфиденциальности</a>
-                    <a href="#" class="footer__nav-link" onclick="openConsentModal(); return false;">Согласие на обработку данных</a>
-                </div>
-            </div>
+<!-- ============ ФУТЕР ============ -->
+<footer class="site-footer">
+    <div class="site-footer__inner">
+        <div class="site-footer__col">
+            <h3 class="site-footer__title">Контакты</h3>
+            <p>Улица Петра Алексеева, 4/2<br>Саха Якутия, г. Якутск</p>
+            <p><a href="tel:+79142744646">8 (914) 274-46-46</a></p>
+            <p><a href="mailto:744646@mail.ru">744646@mail.ru</a></p>
+        </div>
 
-            <div class="footer__copyright">
-                <div class="footer__copyright-text">© 2024 Клиника доктора Мыреева. Все права защищены.</div>
-                <div class="footer__copyright-subtext">Стоматология в Якутске</div>
+        <div class="site-footer__col">
+            <h3 class="site-footer__title">Документы</h3>
+            <div class="site-footer__links">
+                <button type="button" class="site-footer__link-btn" onclick="openPrivacyModal()">Политика конфиденциальности</button>
+                <button type="button" class="site-footer__link-btn" onclick="openConsentModal()">Согласие на обработку данных</button>
             </div>
+        </div>
+
+        <div class="site-footer__col site-footer__col--right">
+            <p class="site-footer__copy">© 2024 Клиника доктора Мыреева. Все права защищены.</p>
+            <p class="site-footer__sub">Стоматология в Якутске</p>
         </div>
     </div>
 </footer>
 
-<!-- Модальное окно цены -->
+<!-- ============ МОДАЛКА ЦЕНЫ ============ -->
 <div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Узнать точную цену</h2>
-        <form class="modal-form" id="modalForm" onsubmit="submitModalForm(event)">
+    <div class="modal__dialog">
+        <span class="modal__close" onclick="closeModal()">&times;</span>
+        <h2 class="modal__title">Узнать точную цену</h2>
+        <form class="modal__form" id="modalForm" onsubmit="submitModalForm(event)">
             <input type="text" id="modalName" placeholder="Ваше имя" required>
             <input type="tel" id="modalPhone" placeholder="Ваш телефон" required>
             <input type="email" id="modalEmail" placeholder="Ваш email">
@@ -337,22 +423,111 @@
                 <option value="surgery">Хирургия</option>
             </select>
             <textarea id="modalComment" placeholder="Дополнительная информация"></textarea>
-            <button type="submit">Отправить заявку</button>
+            <label class="consent-checkbox">
+                <input type="checkbox" id="modalConsent" required>
+                <span>Согласен(на) на <button type="button" class="consent-link" onclick="openConsentModal()">обработку персональных данных</button></span>
+            </label>
+            <button type="submit" class="btn btn--primary btn--block">Отправить заявку</button>
         </form>
     </div>
 </div>
 
-<!-- Модальное окно политики -->
+<!-- ============ МОДАЛКА ПРАЙС-ЛИСТА ============ -->
+<div id="priceModal" class="modal">
+    <div class="modal__dialog modal__dialog--wide">
+        <span class="modal__close" onclick="closePriceModal()">&times;</span>
+        <h2 class="modal__title">Прайс-лист клиники</h2>
+        <p class="price-modal__note">Цены указаны «от» и не являются публичной офертой. Точную стоимость врач назовёт после осмотра.</p>
+
+        <!-- Якорное меню -->
+        <nav class="price-modal__nav" aria-label="Категории прайса">
+            <a href="#price-therapy" class="price-modal__nav-link" onclick="scrollToPrice(event, 'price-therapy')">Терапия</a>
+            <a href="#price-surgery" class="price-modal__nav-link" onclick="scrollToPrice(event, 'price-surgery')">Хирургия</a>
+            <a href="#price-implant" class="price-modal__nav-link" onclick="scrollToPrice(event, 'price-implant')">Имплантация</a>
+            <a href="#price-ortho" class="price-modal__nav-link" onclick="scrollToPrice(event, 'price-ortho')">Ортодонтия</a>
+            <a href="#price-hygiene" class="price-modal__nav-link" onclick="scrollToPrice(event, 'price-hygiene')">Гигиена</a>
+        </nav>
+
+        <!-- TODO: заменить данные на реальные -->
+
+        <section class="price-modal__section" id="price-therapy">
+            <h3 class="price-modal__subtitle">Терапия</h3>
+            <div class="price-table price-table--modal">
+                <div class="price-row"><span class="price-row__name">Консультация врача-стоматолога</span><span class="price-row__value">от 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Лечение кариеса (1 поверхность)</span><span class="price-row__value">от 3 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Лечение кариеса (2 и более поверхностей)</span><span class="price-row__value">от 4 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Лечение пульпита (1 канал)</span><span class="price-row__value">от 5 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Лечение периодонтита</span><span class="price-row__value">от 6 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Замена пломбы</span><span class="price-row__value">от 2 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Эстетическая реставрация зуба</span><span class="price-row__value">от 7 000 ₽</span></div>
+            </div>
+        </section>
+
+        <section class="price-modal__section" id="price-surgery">
+            <h3 class="price-modal__subtitle">Хирургия</h3>
+            <div class="price-table price-table--modal">
+                <div class="price-row"><span class="price-row__name">Удаление зуба (простое)</span><span class="price-row__value">от 2 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Удаление зуба (сложное)</span><span class="price-row__value">от 5 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Удаление зуба мудрости</span><span class="price-row__value">от 6 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Кюретаж лунки</span><span class="price-row__value">от 1 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Наложение швов</span><span class="price-row__value">от 1 000 ₽</span></div>
+            </div>
+        </section>
+
+        <section class="price-modal__section" id="price-implant">
+            <h3 class="price-modal__subtitle">Имплантация</h3>
+            <div class="price-table price-table--modal">
+                <div class="price-row"><span class="price-row__name">Установка имплантата (эконом)</span><span class="price-row__value">от 35 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Установка имплантата (премиум)</span><span class="price-row__value">от 55 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Установка формирователя десны</span><span class="price-row__value">от 3 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Коронка на имплантат (металлокерамика)</span><span class="price-row__value">от 18 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Коронка на имплантат (цирконий)</span><span class="price-row__value">от 28 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Костная пластика</span><span class="price-row__value">от 25 000 ₽</span></div>
+            </div>
+        </section>
+
+        <section class="price-modal__section" id="price-ortho">
+            <h3 class="price-modal__subtitle">Ортодонтия</h3>
+            <div class="price-table price-table--modal">
+                <div class="price-row"><span class="price-row__name">Консультация ортодонта</span><span class="price-row__value">от 1 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Установка брекет-системы (металл)</span><span class="price-row__value">от 45 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Установка брекет-системы (керамика)</span><span class="price-row__value">от 65 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Элайнеры (полный курс)</span><span class="price-row__value">от 120 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Коррекция брекет-системы</span><span class="price-row__value">от 2 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Снятие брекет-системы</span><span class="price-row__value">от 5 000 ₽</span></div>
+            </div>
+        </section>
+
+        <section class="price-modal__section" id="price-hygiene">
+            <h3 class="price-modal__subtitle">Гигиена</h3>
+            <div class="price-table price-table--modal">
+                <div class="price-row"><span class="price-row__name">Профессиональная гигиена полости рта</span><span class="price-row__value">от 4 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Ультразвуковая чистка</span><span class="price-row__value">от 3 000 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Чистка Air Flow</span><span class="price-row__value">от 2 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Полировка зубов</span><span class="price-row__value">от 1 500 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Фторирование</span><span class="price-row__value">от 1 200 ₽</span></div>
+                <div class="price-row"><span class="price-row__name">Герметизация фиссур (1 зуб)</span><span class="price-row__value">от 1 800 ₽</span></div>
+            </div>
+        </section>
+
+        <div class="price-modal__actions">
+            <button class="btn btn--primary" onclick="closePriceModal(); openAppointmentModal();">Записаться на приём</button>
+            <button class="btn btn--ghost-light" style="background:var(--primary-light);color:var(--dark);" onclick="closePriceModal(); openModal();">Узнать точную цену</button>
+        </div>
+    </div>
+</div>
+
+<!-- ============ МОДАЛКА ПОЛИТИКИ ============ -->
 <div id="privacyModal" class="modal">
-    <div class="modal-content privacy-modal-content">
-        <span class="close" onclick="closePrivacyModal()">&times;</span>
-        <h2>Политика конфиденциальности</h2>
-        <div class="privacy-content">
+    <div class="modal__dialog modal__dialog--wide">
+        <span class="modal__close" onclick="closePrivacyModal()">&times;</span>
+        <h2 class="modal__title">Политика конфиденциальности</h2>
+        <div class="doc">
             <p><strong>1. Общие положения</strong></p>
             <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые ООО «Добун» (далее – Оператор).</p>
             <p><strong>2. Основные понятия</strong></p>
             <ul>
-                <li><strong>Персональные данные</strong> – любая информация, относящаяся к прямо или косвенно определенному или определяемому физическому лицу (субъекту персональных данных);</li>
+                <li><strong>Персональные данные</strong> – любая информация, относящаяся к прямо или косвенно определённому или определяемому физическому лицу (субъекту персональных данных);</li>
                 <li><strong>Обработка персональных данных</strong> – любое действие (операция) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными;</li>
                 <li><strong>Сайт</strong> – совокупность графических и информационных материалов, а также программ для ЭВМ и баз данных, обеспечивающих их доступность в сети интернет по адресу (URL);</li>
                 <li><strong>Пользователь</strong> – любой посетитель веб-сайта;</li>
@@ -389,34 +564,38 @@
             Телефон: <a href="tel:+79142744646">8 (914) 274-46-46</a><br>
             Email: <a href="mailto:744646@mail.ru">744646@mail.ru</a></p>
             <p><strong>9. Изменение политики конфиденциальности</strong></p>
-            <p>Оператор имеет право вносить изменения в настоящую Политику конфиденциальности. Новая редакция Политики вступает в силу с момента ее размещения на Сайте.</p>
-            <p style="margin-top: 20px; font-size: 13px; color: #999; text-align: center;">Дата последнего обновления: 11 августа 2026 года</p>
+            <p>Оператор имеет право вносить изменения в настоящую Политику конфиденциальности. Новая редакция Политики вступает в силу с момента её размещения на Сайте.</p>
+            <p class="doc__date">Дата последнего обновления: 11 августа 2026 года</p>
         </div>
     </div>
 </div>
 
-<!-- Модальное окно лицензии -->
+<!-- ============ МОДАЛКА ЛИЦЕНЗИИ ============ -->
 <div id="licenseModal" class="modal">
-    <div class="modal-content license-modal-content">
-        <span class="close" onclick="closeLicenseModal()">&times;</span>
-        <h2>Лицензия на осуществление медицинской деятельности</h2>
+    <div class="modal__dialog modal__dialog--wide">
+        <span class="modal__close" onclick="closeLicenseModal()">&times;</span>
+        <h2 class="modal__title">Лицензия на осуществление медицинской деятельности</h2>
+
         <div class="license-carousel">
-            <div class="license-carousel-container" id="licenseCarousel">
-                <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0001.jpg" alt="Лицензия страница 1" class="license-image"></div>
-                <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0002.jpg" alt="Лицензия страница 2" class="license-image"></div>
-                <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0003.jpg" alt="Лицензия страница 3" class="license-image"></div>
-                <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0004.jpg" alt="Лицензия страница 4" class="license-image"></div>
+            <div class="license-carousel__viewport">
+                <div class="license-carousel__track" id="licenseCarousel">
+                    <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0001.jpg" alt="Лицензия страница 1" class="license-image"></div>
+                    <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0002.jpg" alt="Лицензия страница 2" class="license-image"></div>
+                    <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0003.jpg" alt="Лицензия страница 3" class="license-image"></div>
+                    <div class="license-slide"><img src="img/СВИДЕТЕЛЬСТВО (3)_pages-to-jpg-0004.jpg" alt="Лицензия страница 4" class="license-image"></div>
+                </div>
             </div>
-            <button class="license-carousel-btn license-carousel-prev" onclick="changeLicenseSlide(-1)">❮</button>
-            <button class="license-carousel-btn license-carousel-next" onclick="changeLicenseSlide(1)">❯</button>
-            <div class="license-carousel-dots" id="licenseDots">
+            <button class="license-carousel__btn license-carousel__btn--prev" onclick="changeLicenseSlide(-1)">❮</button>
+            <button class="license-carousel__btn license-carousel__btn--next" onclick="changeLicenseSlide(1)">❯</button>
+            <div class="license-carousel__dots" id="licenseDots">
                 <span class="license-dot active" onclick="goToLicenseSlide(0)"></span>
                 <span class="license-dot" onclick="goToLicenseSlide(1)"></span>
                 <span class="license-dot" onclick="goToLicenseSlide(2)"></span>
                 <span class="license-dot" onclick="goToLicenseSlide(3)"></span>
             </div>
         </div>
-        <div class="license-details">
+
+        <div class="info-box">
             <p><strong>Лицензия:</strong> № Л041-01179-14/01005521</p>
             <p><strong>Дата выдачи:</strong> 22 декабря 2023 года</p>
             <p><strong>Кем выдана:</strong> Министерство здравоохранения Республики Саха (Якутия)</p>
@@ -427,9 +606,10 @@
             <p><strong>Лицензионное дело:</strong> № ЛО-14-01-000264-23 от 06.12.2023 г.</p>
             <p><strong>Регистрационный входящий:</strong> ЕПГУ № 3619506142 от 06.12.2023 г.</p>
         </div>
-        <div class="license-services">
-            <h4>Разрешенные виды деятельности:</h4>
-            <ul>
+
+        <div class="info-box">
+            <h4>Разрешённые виды деятельности</h4>
+            <ul class="info-box__list">
                 <li>Ортодонтия</li>
                 <li>Стоматология ортопедическая</li>
                 <li>Стоматология терапевтическая</li>
@@ -438,21 +618,23 @@
                 <li>Сестринское дело</li>
             </ul>
         </div>
-        <div class="license-info">
+
+        <div class="info-box info-box--accent">
             <p><strong>Министр здравоохранения РС(Я):</strong> Л.Н. Афанасьева</p>
             <p><strong>Документ создан:</strong> в электронной форме в Министерстве здравоохранения Республики Саха (Якутия)</p>
         </div>
     </div>
 </div>
 
-<!-- Модальное окно согласия -->
+<!-- ============ МОДАЛКА СОГЛАСИЯ ============ -->
 <div id="consentModal" class="modal">
-    <div class="modal-content consent-modal-content">
-        <span class="close" onclick="closeConsentModal()">&times;</span>
-        <h2>Согласие на обработку персональных данных</h2>
-        <div class="consent-content">
-            <p>Настоящим я, заполняя форму на сайте <strong>Клиника доктора Мыреева</strong>, даю свое согласие на обработку моих персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
-            <div class="consent-block">
+    <div class="modal__dialog modal__dialog--wide">
+        <span class="modal__close" onclick="closeConsentModal()">&times;</span>
+        <h2 class="modal__title">Согласие на обработку персональных данных</h2>
+        <div class="doc">
+            <p>Настоящим я, заполняя форму на сайте <strong>Клиника доктора Мыреева</strong>, даю своё согласие на обработку моих персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+
+            <div class="info-box">
                 <h4>1. Перечень персональных данных</h4>
                 <ul>
                     <li>Фамилия, имя, отчество</li>
@@ -461,21 +643,24 @@
                     <li>Информация о состоянии здоровья (в рамках выбранных услуг)</li>
                 </ul>
             </div>
-            <div class="consent-block">
+
+            <div class="info-box">
                 <h4>2. Цели обработки персональных данных</h4>
                 <ul>
-                    <li>Запись на прием к врачу-стоматологу</li>
+                    <li>Запись на приём к врачу-стоматологу</li>
                     <li>Получение консультации по услугам клиники</li>
                     <li>Информирование о результатах диагностики и лечения</li>
                     <li>Направление уведомлений о предстоящих визитах</li>
                     <li>Проведение маркетинговых исследований и опросов</li>
                 </ul>
             </div>
-            <div class="consent-block">
+
+            <div class="info-box">
                 <h4>3. Срок действия согласия</h4>
-                <p>Настоящее согласие действует с момента его принятия и до момента его отзыва в письменной форме. Согласие может быть отозвано путем направления письменного заявления по адресу: 677000, Республика Саха (Якутия), г. Якутск, ул. Петра Алексеева, д. 4/2, помещ. 1.</p>
+                <p>Настоящее согласие действует с момента его принятия и до момента его отзыва в письменной форме. Согласие может быть отозвано путём направления письменного заявления по адресу: 677000, Республика Саха (Якутия), г. Якутск, ул. Петра Алексеева, д. 4/2, помещ. 1.</p>
             </div>
-            <div class="consent-block">
+
+            <div class="info-box">
                 <h4>4. Права субъекта персональных данных</h4>
                 <ul>
                     <li>Право на получение информации о целях и способах обработки данных</li>
@@ -484,7 +669,8 @@
                     <li>Право на обжалование действий Оператора</li>
                 </ul>
             </div>
-            <div class="consent-block">
+
+            <div class="info-box">
                 <h4>5. Контактная информация Оператора</h4>
                 <p><strong>ООО «Добун»</strong></p>
                 <p>Юридический адрес: 677000, Республика Саха (Якутия), г. Якутск, ул. Петра Алексеева, д. 4/2, помещ. 1</p>
@@ -492,20 +678,21 @@
                 <p>Телефон: <a href="tel:+79142744646">8 (914) 274-46-46</a></p>
                 <p>Email: <a href="mailto:744646@mail.ru">744646@mail.ru</a></p>
             </div>
-            <div class="consent-block consent-agreement">
-                <p><strong>Нажимая на кнопку «Принимаю», я подтверждаю, что ознакомлен(а) с условиями обработки персональных данных и даю свое согласие на их обработку.</strong></p>
-                <button class="consent-agree-btn" onclick="acceptConsent()">Принимаю</button>
+
+            <div class="info-box info-box--accent">
+                <p><strong>Нажимая на кнопку «Принимаю», я подтверждаю, что ознакомлен(а) с условиями обработки персональных данных и даю своё согласие на их обработку.</strong></p>
+                <button class="btn btn--light" onclick="acceptConsent()">Принимаю</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Модальное окно записи из хедера -->
+<!-- ============ МОДАЛКА ЗАПИСИ ИЗ ХЕДЕРА ============ -->
 <div id="appointmentModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeAppointmentModal()">&times;</span>
-        <h2>Запись на приём</h2>
-        <form class="modal-form" id="headerAppointmentForm" onsubmit="submitHeaderAppointment(event)">
+    <div class="modal__dialog">
+        <span class="modal__close" onclick="closeAppointmentModal()">&times;</span>
+        <h2 class="modal__title">Запись на приём</h2>
+        <form class="modal__form" id="headerAppointmentForm" onsubmit="submitHeaderAppointment(event)">
             <input type="text" id="headerName" placeholder="Ваше имя" required>
             <input type="tel" id="headerPhone" placeholder="Ваш телефон" required>
             <select id="headerService" required>
@@ -517,23 +704,32 @@
                 <option value="cleaning">Чистка зубов</option>
                 <option value="surgery">Хирургия</option>
             </select>
-            <button type="submit">Записаться</button>
+            <label class="consent-checkbox">
+                <input type="checkbox" id="headerConsent" required>
+                <span>Согласен(на) на <button type="button" class="consent-link" onclick="openConsentModal()">обработку персональных данных</button></span>
+            </label>
+            <button type="submit" class="btn btn--primary btn--block">Записаться</button>
         </form>
     </div>
 </div>
 
-<!-- ============================================================ -->
-<!-- ЕДИНЫЙ СКРИПТ (без изменений) -->
-<!-- ============================================================ -->
+<!-- ============ СКРИПТ ============ -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         initCarousel();
-        initPriceCarousel();
         initHamburgerMenu();
         initSmoothScroll();
         initFormsEnterKey();
         initLicenseCarousel();
         initCookieConsent();
+
+        // Если согласие уже принято — проставить галочки
+        if (localStorage.getItem('consentAccepted') === 'true') {
+            ['modalConsent', 'headerConsent', 'bookingConsent'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.checked = true;
+            });
+        }
     });
 
     function initCarousel() {
@@ -547,27 +743,13 @@
 
         const prevBtn = createButton('carousel-btn carousel-prev', '‹');
         const nextBtn = createButton('carousel-btn carousel-next', '›');
-        const dotsContainer = document.createElement('div');
-        dotsContainer.className = 'carousel-dots';
-
-        const dots = [];
-        images.forEach((_, index) => {
-            const dot = createButton('carousel-dot', '');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => showImage(index));
-            dotsContainer.appendChild(dot);
-            dots.push(dot);
-        });
 
         carousel.appendChild(prevBtn);
         carousel.appendChild(nextBtn);
-        carousel.appendChild(dotsContainer);
 
         function showImage(index) {
             images.forEach(img => img.style.opacity = '0');
             images[index].style.opacity = '1';
-            dots.forEach(d => d.classList.remove('active'));
-            dots[index].classList.add('active');
             currentIndex = index;
         }
 
@@ -592,43 +774,6 @@
         startAutoPlay();
     }
 
-    function initPriceCarousel() {
-        const container = document.querySelector('.price__blocks-container');
-        if (!container || window.innerWidth > 1024) return;
-        const blocks = document.querySelectorAll('.price__block');
-        if (blocks.length < 2) return;
-
-        const nav = document.createElement('div');
-        nav.className = 'price__carousel-nav';
-
-        blocks.forEach((_, index) => {
-            const dot = createButton('price__carousel-dot', '');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => scrollToBlock(index));
-            nav.appendChild(dot);
-        });
-        container.parentNode.appendChild(nav);
-
-        function scrollToBlock(index) {
-            const block = blocks[index];
-            container.scrollTo({ left: block.offsetLeft - container.offsetLeft, behavior: 'smooth' });
-        }
-
-        function updateDots() {
-            const scrollLeft = container.scrollLeft;
-            const halfWidth = container.offsetWidth / 2;
-            blocks.forEach((block, index) => {
-                const dot = nav.children[index];
-                if (!dot) return;
-                const left = block.offsetLeft - container.offsetLeft;
-                const right = left + block.offsetWidth;
-                const active = scrollLeft >= left - halfWidth && scrollLeft <= right - halfWidth;
-                dot.classList.toggle('active', active);
-            });
-        }
-        container.addEventListener('scroll', updateDots);
-    }
-
     function initHamburgerMenu() {
         const toggle = document.getElementById('menuToggle');
         const content = document.getElementById('headerContent');
@@ -640,6 +785,7 @@
             content.classList.toggle('active', isActive);
             overlay.classList.toggle('active', isActive);
             toggle.classList.toggle('active', isActive);
+            toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
             document.body.style.overflow = isActive ? 'hidden' : '';
         };
 
@@ -651,15 +797,18 @@
     }
 
     function initSmoothScroll() {
-        document.querySelectorAll('.footer__nav-link, .header-nav__link').forEach(link => {
+        document.querySelectorAll('.main-nav__link').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (!href || href === '#') return;
+                if (!href || !href.startsWith('#')) return;
+                if (this.hasAttribute('onclick')) return;
+
                 e.preventDefault();
                 const target = document.getElementById(href.substring(1));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+
                 const content = document.getElementById('headerContent');
                 const overlay = document.getElementById('overlay');
                 const toggle = document.getElementById('menuToggle');
@@ -674,9 +823,14 @@
     }
 
     function initFormsEnterKey() {
-        document.querySelectorAll('.appointment__form-input input, .appointment__form-input select').forEach(input => {
+        document.querySelectorAll('.booking__form input, .booking__form select').forEach(input => {
             input.addEventListener('keypress', e => {
-                if (e.key === 'Enter') { e.preventDefault(); submitAppointment(); }
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const btn = document.querySelector('.booking__form .btn--block');
+                    if (btn && btn.disabled) return;
+                    submitAppointment();
+                }
             });
         });
     }
@@ -740,12 +894,11 @@
         if (banner) banner.classList.remove('show');
     }
 
-    // ===================== МОДАЛЬНЫЕ ОКНА =====================
     function openModal(service) {
         if (service === undefined) service = '';
         const modal = document.getElementById('modal');
         if (!modal) return;
-        modal.style.display = 'block';
+        modal.classList.add('active');
         document.body.style.overflow = 'hidden';
         if (service) {
             const select = document.getElementById('modalService');
@@ -759,13 +912,13 @@
 
     function closeModal() {
         const modal = document.getElementById('modal');
-        if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
+        if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
     }
 
     function openLicenseModal() {
         const modal = document.getElementById('licenseModal');
         if (!modal) return;
-        modal.style.display = 'block';
+        modal.classList.add('active');
         document.body.style.overflow = 'hidden';
         if (window.goToLicenseSlide) window.goToLicenseSlide(0);
         if (window.startAutoSlide) window.startAutoSlide();
@@ -773,7 +926,7 @@
 
     function closeLicenseModal() {
         const modal = document.getElementById('licenseModal');
-        if (modal) modal.style.display = 'none';
+        if (modal) modal.classList.remove('active');
         document.body.style.overflow = '';
         if (window.stopAutoSlide) window.stopAutoSlide();
     }
@@ -797,27 +950,59 @@
 
     function openAppointmentModal() {
         const modal = document.getElementById('appointmentModal');
-        if (modal) { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+        if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
     }
     function closeAppointmentModal() {
         const modal = document.getElementById('appointmentModal');
-        if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
+        if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
     }
 
     function acceptConsent() {
         closeConsentModal();
         localStorage.setItem('consentAccepted', 'true');
+        ['modalConsent', 'headerConsent', 'bookingConsent'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.checked = true;
+        });
     }
 
-    // ===================== ЗАКРЫТИЕ ПО ФОНУ / ESC =====================
+    function openPriceModal() {
+    const modal = document.getElementById('priceModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // прокрутить диалог вверх при открытии
+    const dialog = modal.querySelector('.modal__dialog');
+    if (dialog) dialog.scrollTop = 0;
+}
+
+    function closePriceModal() {
+        const modal = document.getElementById('priceModal');
+        if (modal) modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function scrollToPrice(event, id) {
+        event.preventDefault();
+        const target = document.getElementById(id);
+        if (!target) return;
+        const dialog = target.closest('.modal__dialog');
+        if (!dialog) return;
+        const offset = 70; // высота sticky-навигации + отступ
+        const top = target.offsetTop - dialog.offsetTop - offset;
+        dialog.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
     document.addEventListener('click', function(event) {
         var modals = {
             modal: closeModal,
             licenseModal: closeLicenseModal,
             privacyModal: closePrivacyModal,
             consentModal: closeConsentModal,
-            appointmentModal: closeAppointmentModal
+            appointmentModal: closeAppointmentModal,
+            priceModal: closePriceModal
         };
+
         for (var id in modals) {
             if (modals.hasOwnProperty(id)) {
                 var el = document.getElementById(id);
@@ -833,12 +1018,14 @@
                 modal: closeModal,
                 privacyModal: closePrivacyModal,
                 consentModal: closeConsentModal,
-                appointmentModal: closeAppointmentModal
+                appointmentModal: closeAppointmentModal,
+                priceModal: closePriceModal
+          
             };
             for (var id in modals) {
                 if (modals.hasOwnProperty(id)) {
                     var el = document.getElementById(id);
-                    if (el && (el.style.display === 'block' || el.classList.contains('active'))) {
+                    if (el && el.classList.contains('active')) {
                         modals[id]();
                         break;
                     }
@@ -847,9 +1034,14 @@
         }
     });
 
-    // ===================== TELEGRAM =====================
-    var TELEGRAM_BOT_TOKEN = '8378213561:AAFV3pg8EHsa-GnKTkFk_qhWe7oYG3_V6Io';
-    var TELEGRAM_CHAT_ID = '6632375299';
+    // ВСТАВЬТЕ СЮДА ВАШИ ДАННЫЕ ОТ CLOUDFLARE
+
+    var RELAY_URL = 'https://myreev-relay.okrodik.workers.dev'; // <--- ВОТ ТАК ПРАВИЛЬНО
+    var RELAY_SECRET = 'myreev_secure_2026'; 
+
+    if (window.console) {
+        console.log('Отправка заявок настроена через Cloudflare Relay');
+    }
 
     async function sendToTelegram(name, phone, service, type, email, comment) {
         if (type === undefined) type = 'запись';
@@ -869,28 +1061,37 @@
             '📱 Телефон клиники: 8 (914) 274-46-46\n\n' +
             '❗ СРОЧНО СВЯЗАТЬСЯ С КЛИЕНТОМ\n';
 
-        var response = await fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', {
+        // ОТПРАВЛЯЕМ НА CLOUDFLARE, А НЕ В TELEGRAM НАПРЯМУЮ
+        var response = await fetch(RELAY_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message })
+            headers: { 
+                'Content-Type': 'application/json',
+                'X-Key': RELAY_SECRET
+            },
+            body: JSON.stringify({ text: message })
         });
-        var data = await response.json();
-        if (!data.ok) throw new Error('Telegram error: ' + (data.description || ''));
+        
+        if (!response.ok) {
+            throw new Error('Relay error: HTTP ' + response.status);
+        }
     }
 
     async function submitAppointment() {
         var nameInput = document.getElementById('appointmentName');
         var phoneInput = document.getElementById('appointmentPhone');
         var select = document.getElementById('appointmentService');
+        var consentEl = document.getElementById('bookingConsent');
+
         var name = nameInput ? nameInput.value.trim() : '';
         var phone = phoneInput ? phoneInput.value.trim() : '';
         var service = select ? select.value : '';
-        var serviceText = select && select.selectedOptions && select.selectedOptions[0] ? select.selectedOptions[0].text : '';
+        var serviceText = select && select.selectedOptions[0] ? select.selectedOptions[0].text : '';
 
         if (!name || !phone || !service) { alert('Пожалуйста, заполните все поля!'); return; }
+        if (!consentEl || !consentEl.checked) { alert('Необходимо согласие на обработку персональных данных'); return; }
 
-        var btn = document.querySelector('.appointment__form-button');
-        if (!btn) return;
+        var btn = document.querySelector('.booking__form .btn--block');
+        if (!btn || btn.disabled) return;
         var originalText = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Отправка...';
@@ -901,9 +1102,10 @@
             if (nameInput) nameInput.value = '';
             if (phoneInput) phoneInput.value = '';
             if (select) select.selectedIndex = 0;
+            if (consentEl) consentEl.checked = false;
         } catch (error) {
             alert('❌ Ошибка отправки. Позвоните нам: 8 (914) 274-46-46');
-            console.error('Telegram error:', error);
+            console.error(error);
         } finally {
             btn.disabled = false;
             btn.textContent = originalText;
@@ -917,18 +1119,20 @@
         var emailInput = document.getElementById('modalEmail');
         var select = document.getElementById('modalService');
         var commentInput = document.getElementById('modalComment');
+        var consentEl = document.getElementById('modalConsent');
 
         var name = nameInput ? nameInput.value.trim() : '';
         var phone = phoneInput ? phoneInput.value.trim() : '';
         var email = emailInput ? emailInput.value.trim() : '';
         var service = select ? select.value : '';
-        var serviceText = select && select.selectedOptions && select.selectedOptions[0] ? select.selectedOptions[0].text : '';
+        var serviceText = select && select.selectedOptions[0] ? select.selectedOptions[0].text : '';
         var comment = commentInput ? commentInput.value.trim() : '';
 
         if (!name || !phone || !service) { alert('Пожалуйста, заполните обязательные поля'); return; }
+        if (!consentEl || !consentEl.checked) { alert('Необходимо согласие на обработку персональных данных'); return; }
 
         var btn = event.target.querySelector('button[type="submit"]');
-        if (!btn) return;
+        if (!btn || btn.disabled) return;
         var originalText = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Отправка...';
@@ -941,7 +1145,7 @@
             if (form) form.reset();
         } catch (error) {
             alert('❌ Ошибка отправки. Позвоните нам: 8 (914) 274-46-46');
-            console.error('Telegram error:', error);
+            console.error(error);
         } finally {
             btn.disabled = false;
             btn.textContent = originalText;
@@ -950,15 +1154,21 @@
 
     async function submitHeaderAppointment(event) {
         event.preventDefault();
-        var name = document.getElementById('headerName').value.trim();
-        var phone = document.getElementById('headerPhone').value.trim();
+        var nameEl = document.getElementById('headerName');
+        var phoneEl = document.getElementById('headerPhone');
         var select = document.getElementById('headerService');
-        var service = select.value;
-        var serviceText = select.selectedOptions[0] ? select.selectedOptions[0].text : '';
+        var consentEl = document.getElementById('headerConsent');
+
+        var name = nameEl ? nameEl.value.trim() : '';
+        var phone = phoneEl ? phoneEl.value.trim() : '';
+        var service = select ? select.value : '';
+        var serviceText = select && select.selectedOptions[0] ? select.selectedOptions[0].text : '';
 
         if (!name || !phone || !service) { alert('Пожалуйста, заполните все поля!'); return; }
+        if (!consentEl || !consentEl.checked) { alert('Необходимо согласие на обработку персональных данных'); return; }
 
         var btn = event.target.querySelector('button[type="submit"]');
+        if (!btn || btn.disabled) return;
         var originalText = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Отправка...';
@@ -979,6 +1189,7 @@
 
     function createButton(className, html) {
         var btn = document.createElement('button');
+        btn.type = 'button';
         btn.className = className;
         btn.innerHTML = html;
         return btn;

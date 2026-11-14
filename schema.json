@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Clinic Doctor Myreev CMS Schema",
+  "version": "1.0.0",
+  "entities": {
+
+    "service": {
+      "label": "Услуга",
+      "collection": "services",
+      "url": "/uslugi/{slug}/",
+      "fields": {
+        "slug":          { "type": "string", "required": true, "unique": true, "pattern": "^[a-z0-9-]+$" },
+        "title":         { "type": "string", "required": true },
+        "h1":            { "type": "string", "required": true },
+        "category":      { "type": "enum",   "required": true, "options": ["therapy", "surgery", "implant", "ortho", "hygiene", "spa"] },
+        "shortDesc":     { "type": "text",   "required": true, "max": 300 },
+        "lead":          { "type": "text",   "required": true, "max": 600 },
+        "priceFrom":     { "type": "number", "required": true },
+        "priceCurrency": { "type": "string", "default": "RUB" },
+        "duration":      { "type": "string" },
+        "indications":   { "type": "array",  "items": "string" },
+        "contraindications": { "type": "array", "items": "string" },
+        "steps":         { "type": "array",  "items": { "type": "object", "fields": { "title": "string", "text": "text" } } },
+        "materials":     { "type": "array",  "items": { "type": "object", "fields": { "title": "string", "text": "text" } } },
+        "prices":        { "type": "array",  "items": { "type": "object", "fields": { "name": "string", "value": "number" } } },
+        "doctors":       { "type": "relation", "relation": "doctor", "multiple": true },
+        "faq":           { "type": "array",  "items": { "type": "object", "fields": { "q": "string", "a": "text" } } },
+        "reviews":       { "type": "relation", "relation": "review", "multiple": true },
+        "related":       { "type": "relation", "relation": "service", "multiple": true },
+        "images":        { "type": "array",  "items": { "type": "object", "fields": { "url": "string", "alt": "string", "type": "enum:cover|before|after|gallery" } } },
+        "seo":           { "type": "object", "fields": { "title": "string", "description": "string", "ogImage": "string" } },
+        "published":     { "type": "boolean", "default": true },
+        "createdAt":     { "type": "datetime" },
+        "updatedAt":     { "type": "datetime" }
+      }
+    },
+
+    "doctor": {
+      "label": "Врач",
+      "collection": "doctors",
+      "url": "/o-klinike/vrachi/{slug}/",
+      "fields": {
+        "slug":          { "type": "string", "required": true, "unique": true },
+        "fullName":      { "type": "string", "required": true },
+        "position":      { "type": "string", "required": true },
+        "specialization":{ "type": "array",  "items": "string" },
+        "experienceYears": { "type": "number", "required": true },
+        "photo":         { "type": "string" },
+        "education":     { "type": "array",  "items": { "type": "object", "fields": { "institution": "string", "year": "number", "specialty": "string" } } },
+        "certificates":  { "type": "array",  "items": "string" },
+        "courses":       { "type": "array",  "items": { "type": "object", "fields": { "title": "string", "year": "number" } } },
+        "services":      { "type": "relation", "relation": "service", "multiple": true },
+        "reviews":       { "type": "relation", "relation": "review", "multiple": true },
+        "bio":           { "type": "text" },
+        "published":     { "type": "boolean", "default": true }
+      }
+    },
+
+    "review": {
+      "label": "Отзыв",
+      "collection": "reviews",
+      "fields": {
+        "author":        { "type": "string", "required": true },
+        "text":          { "type": "text",   "required": true },
+        "rating":        { "type": "number", "min": 1, "max": 5 },
+        "date":          { "type": "date" },
+        "service":       { "type": "relation", "relation": "service" },
+        "doctor":        { "type": "relation", "relation": "doctor" },
+        "screenshotUrl": { "type": "string" },
+        "source":        { "type": "enum", "options": ["2gis", "yandex", "site", "google"] },
+        "published":     { "type": "boolean", "default": true }
+      }
+    },
+
+    "priceItem": {
+      "label": "Позиция прайса",
+      "collection": "prices",
+      "fields": {
+        "category":      { "type": "enum", "required": true, "options": ["therapy", "surgery", "implant", "ortho", "hygiene", "spa"] },
+        "name":          { "type": "string", "required": true },
+        "price":         { "type": "number", "required": true },
+        "priceFrom":     { "type": "boolean", "default": true },
+        "duration":      { "type": "string" },
+        "order":         { "type": "number", "default": 0 }
+      }
+    },
+
+    "page": {
+      "label": "Статическая страница",
+      "collection": "pages",
+      "url": "/{slug}/",
+      "fields": {
+        "slug":          { "type": "string", "required": true, "unique": true },
+        "title":         { "type": "string", "required": true },
+        "h1":            { "type": "string", "required": true },
+        "content":       { "type": "richtext" },
+        "seo":           { "type": "object", "fields": { "title": "string", "description": "string", "ogImage": "string" } },
+        "published":     { "type": "boolean", "default": true }
+      }
+    },
+
+    "post": {
+      "label": "Статья блога",
+      "collection": "posts",
+      "url": "/blog/{slug}/",
+      "fields": {
+        "slug":          { "type": "string", "required": true, "unique": true },
+        "title":         { "type": "string", "required": true },
+        "excerpt":       { "type": "text", "max": 300 },
+        "content":       { "type": "richtext", "required": true },
+        "cover":         { "type": "string" },
+        "category":      { "type": "enum", "options": ["hygiene", "implant", "kids", "aesthetics"] },
+        "author":        { "type": "relation", "relation": "doctor" },
+        "publishedAt":   { "type": "datetime" },
+        "readingTime":   { "type": "number" },
+        "seo":           { "type": "object", "fields": { "title": "string", "description": "string", "ogImage": "string" } },
+        "published":     { "type": "boolean", "default": true }
+      }
+    },
+
+    "lead": {
+      "label": "Заявка",
+      "collection": "leads",
+      "fields": {
+        "name":          { "type": "string", "required": true },
+        "phone":         { "type": "string", "required": true },
+        "email":         { "type": "string" },
+        "service":       { "type": "relation", "relation": "service" },
+        "doctor":        { "type": "relation", "relation": "doctor" },
+        "comment":       { "type": "text" },
+        "source":        { "type": "enum", "options": ["header", "hero", "service", "price", "footer", "modal"] },
+        "status":        { "type": "enum", "options": ["new", "contacted", "scheduled", "closed", "spam"], "default": "new" },
+        "consent":       { "type": "boolean", "required": true },
+        "createdAt":     { "type": "datetime" }
+      }
+    },
+
+    "settings": {
+      "label": "Настройки сайта",
+      "collection": "settings",
+      "fields": {
+        "phone":         { "type": "string" },
+        "phoneSecondary":{ "type": "string" },
+        "email":         { "type": "string" },
+        "address":       { "type": "string" },
+        "schedule":      { "type": "string" },
+        "social":        { "type": "object", "fields": { "whatsapp": "string", "telegram": "string", "max": "string" } },
+        "mapEmbedUrl":   { "type": "string" },
+        "licensePdf":    { "type": "string" },
+        "licenseImages": { "type": "array", "items": "string" },
+        "legalEntity":   { "type": "object", "fields": { "name": "string", "inn": "string", "ogrn": "string" } }
+      }
+    }
+  }
+}
